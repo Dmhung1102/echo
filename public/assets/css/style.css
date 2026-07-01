@@ -16,7 +16,7 @@ body.dark-theme {
     .latest-news-time-views a{
         color: var(--text-theme-light) !important;
     }
-    .editor-section {
+    .editor-section, .tip-section, .download-section {
         background: #181823;
     }
     .editor-section .latest-content {
@@ -621,7 +621,7 @@ i.fa-solid.fa-angle-down {
     padding: 65px 0;
 }
 
-.latest-section, .feature-section, .editor-section {
+.latest-section, .feature-section, .editor-section, .tip-section {
     background: var(--bg-section);
     padding: 90px 0;
 }
@@ -1442,7 +1442,7 @@ body.dark-theme .top-game-num {
         display: none;
     }
 
-    .latest-section, .feature-section, .editor-section {
+    .latest-section, .feature-section, .editor-section,  .tip-section {
         padding: 30px 15px;
     }
 }
