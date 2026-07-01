@@ -643,16 +643,16 @@
                                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s" alt="" class="tip-img">
                                 </a>
                             </div>
-                            <div class="tip-content d-flex flex-column justify-content-center">
+                            <div class="tip-content d-flex flex-column justify-content-between py-2">
                                 <div>
                                     <span class="badge-tag text-uppercase">game guides</span>
                                 </div>
-                                <h3 class="tip-title truncate-2-line">
+                                <h3 class="tip-title">
                                     <a href="" class="title-hover text-theme-light text-capitalize">
                                         <span class="title-hover">10 Critical Things To Know Before Playing...</span>
                                     </a>
                                 </h3>
-                                <div class="latest-news-time-views p-0 border-0 mt-2">
+                                <div class="latest-news-time-views p-0 border-0">
                                     <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
                                     <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
                                 </div>
@@ -666,16 +666,16 @@
                                     <img src="https://funix.edu.vn/wp-content/uploads/2023/07/Game-HTML5.jpg" alt="" class="tip-img">
                                 </a>
                             </div>
-                            <div class="tip-content d-flex flex-column justify-content-center">
+                            <div class="tip-content d-flex flex-column justify-content-between py-2">
                                 <div>
                                     <span class="badge-tag text-uppercase">game guides</span>
                                 </div>
-                                <h3 class="tip-title truncate-2-line">
+                                <h3 class="tip-title">
                                     <a href="" class="title-hover text-theme-light text-capitalize">
                                         <span class="title-hover">9 Things We Wish We Knew Before Playing...</span>
                                     </a>
                                 </h3>
-                                <div class="latest-news-time-views p-0 border-0 mt-2">
+                                <div class="latest-news-time-views p-0 border-0">
                                     <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
                                     <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
                                 </div>
@@ -689,26 +689,21 @@
                                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s" alt="" class="tip-img">
                                 </a>
                             </div>
-                            <div class="tip-content d-flex flex-column justify-content-center">
+                            <div class="tip-content d-flex flex-column justify-content-between py-2">
                                 <div>
                                     <span class="badge-tag text-uppercase">game guides</span>
                                 </div>
-                                <h3 class="tip-title truncate-2-line">
+                                <h3 class="tip-title">
                                     <a href="" class="title-hover text-theme-light text-capitalize">
                                         <span class="title-hover">14 Tight Samurai Games You Should Play</span>
                                     </a>
                                 </h3>
-                                <div class="latest-news-time-views p-0 border-0 mt-2">
+                                <div class="latest-news-time-views p-0 border-0">
                                     <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
                                     <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="text-center mt-5">
-                        <a href="#" class="rts-btn see-all-btn">
-                            Show More <i class="bi bi-arrow-right"></i>
-                        </a>
                     </div>
                 </div>
 
@@ -738,12 +733,10 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Item 02 -->
                         <div class="top-game-item d-flex align-items-center p-3 mb-3">
                             <span class="top-game-num">02</span>
                             <div class="top-game-info flex-grow-1">
-                                <h4 class="top-game-title truncate-1-line mb-1">
+                                <h4 class="top-game-title truncate-2-line mb-1">
                                     <a href="" class="title-hover text-theme-light">
                                         Forspoken | A Square Enix Open-World RPG...
                                     </a>
@@ -753,12 +746,10 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Item 03 -->
                         <div class="top-game-item d-flex align-items-center p-3 mb-3">
                             <span class="top-game-num">03</span>
                             <div class="top-game-info flex-grow-1">
-                                <h4 class="top-game-title truncate-1-line mb-1">
+                                <h4 class="top-game-title truncate-2-line mb-1">
                                     <a href="" class="title-hover text-theme-light">
                                         Kerbal Space Program 2 | Your Favorite...
                                     </a>
@@ -768,6 +759,26 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="top-game-item d-flex align-items-center p-3 mb-3">
+                            <span class="top-game-num">03</span>
+                            <div class="top-game-info flex-grow-1">
+                                <h4 class="top-game-title truncate-2-line mb-1">
+                                    <a href="" class="title-hover text-theme-light">
+                                        Kerbal Space Program 2 | Your Favorite...
+                                    </a>
+                                </h4>
+                                <div class="shares text-muted fs-7">
+                                    <i class="fa-solid fa-share-nodes me-2"></i>100+K Shares
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="text-center pt-4 btn-more-end">
+                        <a href="#" class="rts-btn see-all-btn">
+                            Show More <i class="bi bi-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -814,6 +825,5 @@
         </div>
     </div>
     <div class="footer-section">
-
     </div>
 @endsection

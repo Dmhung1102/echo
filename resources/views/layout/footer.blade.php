@@ -62,4 +62,8 @@
             </p>
         </div>
     </div>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="scroll-to-top-btn" aria-label="Back to Top">
+        <i class="fa-solid fa-angles-up"></i>
+    </button>
 </footer>
