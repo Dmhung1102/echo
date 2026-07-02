@@ -3,6 +3,9 @@
     Home
 @endsection
 @section('content')
+    @php
+        $postLatest = $posts->first();
+    @endphp
     <div class="hero-section">
         <div class="container">
             <div class="row">
@@ -11,21 +14,22 @@
                         <div class="position-relative block-content-img">
                             <a href="" class="content-img">
                                 <img
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
+                                    src="{{$postLatest->featured_image}}"
                                     alt="" class="latest-news-img w-100">
                             </a>
                             <a href="" class="content-category">
-                                <span>GAMING</span>
+                                <span>{{$postLatest->category->first()->title}}</span>
                             </a>
                         </div>
                         <div class="content">
                             <h1 class="latest-content-title text-center">
                                 <a href="" class="title-hover text-capitalize text-content-black">
-                                    PlayStation stars Campaigns and Digital Collectibles 23
+                                    {{$postLatest->title}}
                                 </a>
                             </h1>
                             <div class="latest-news-time-views text-center">
-                                <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
+                                <a href="#" class="pe-none"><i
+                                        class="fa-solid fa-calendar me-2"></i>{{$postLatest->formatted_date}}</a>
                                 <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
                                 <a href="#" class="pe-none"><i class="fa-solid fa-pen me-2"></i> John Snow</a>
                             </div>
@@ -36,86 +40,28 @@
                 <div class="col-xl-4 col-lg-4">
                     <div class="banner-side">
                         <ul>
-                            <li>
-                                <div class="content p-0">
-                                    <h3 class="title-latest">
-                                        <a href="" class="title title-hover-white">
-                                            Jump into Wayfinder 23
+                            @foreach($posts->take(5)->skip(1) as $post)
+                                <li>
+                                    <div class="content p-0">
+                                        <h3 class="title-latest">
+                                            <a href="" class="title text-white truncate-2-line">
+                                                <span class="title-hover-white">{{$post->clean_title}}</span>
+                                            </a>
+                                        </h3>
+                                        <p class="">
+                                            <a href="#" class="desc"><i
+                                                    class="fa-solid fa-calendar me-2"></i>{{$post->formatted_date}}</a>
+                                        </p>
+                                    </div>
+                                    <div class="">
+                                        <a href="" class="latest-banner-img">
+                                            <img
+                                                src="{{$post->featured_image}}"
+                                                alt="" class="latest-news-img">
                                         </a>
-                                    </h3>
-                                    <p class="">
-                                        <a href="#" class="desc"><i class="fa-solid fa-calendar me-2"></i>01 Jan
-                                            2023</a>
-                                    </p>
-                                </div>
-                                <div class="">
-                                    <a href="" class="latest-banner-img">
-                                        <img
-                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                            alt="" class="latest-news-img">
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content p-0">
-                                    <h3 class="title-latest">
-                                        <a href="" class="title title-hover-white">
-                                            Jump into Wayfinder 23
-                                        </a>
-                                    </h3>
-                                    <p class="">
-                                        <a href="#" class="desc"><i class="fa-solid fa-calendar me-2"></i>01 Jan
-                                            2023</a>
-                                    </p>
-                                </div>
-                                <div class="">
-                                    <a href="" class="latest-banner-img">
-                                        <img
-                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                            alt="" class="latest-news-img">
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content p-0">
-                                    <h3 class="title-latest">
-                                        <a href="" class="title title-hover-white">
-                                            Jump into Wayfinder 23
-                                        </a>
-                                    </h3>
-                                    <p class="">
-                                        <a href="#" class="desc"><i class="fa-solid fa-calendar me-2"></i>01 Jan
-                                            2023</a>
-                                    </p>
-                                </div>
-                                <div class="">
-                                    <a href="" class="latest-banner-img">
-                                        <img
-                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                            alt="" class="latest-news-img">
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content p-0">
-                                    <h3 class="title-latest">
-                                        <a href="" class="title title-hover-white">
-                                            Jump into Wayfinder 23
-                                        </a>
-                                    </h3>
-                                    <p class="">
-                                        <a href="#" class="desc"><i class="fa-solid fa-calendar me-2"></i>01 Jan
-                                            2023</a>
-                                    </p>
-                                </div>
-                                <div class="">
-                                    <a href="" class="latest-banner-img">
-                                        <img
-                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                            alt="" class="latest-news-img">
-                                    </a>
-                                </div>
-                            </li>
+                                    </div>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -136,81 +82,41 @@
             </div>
             <div class="content-area">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="latest-content">
-                            <div class="position-relative block-content-img">
-                                <a href="" class="content-img content-img-border">
-                                    <img
-                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                        alt="" class="latest-news-img img-height-260">
-                                </a>
-                                <a href="" class="content-category">
-                                    <span>GAMING</span>
-                                </a>
-                            </div>
-                            <div class="content pb-0">
-                                <h3 class="latest-content-title text-center">
-                                    <a href="" class="title-hover text-capitalize text-theme-light ">
-                                        Bungie Wins $12 Million In Destiny 2 Anti-Cheat Lawsuit
+                    @php
+                        $listTrending = $posts->filter(function ($post) {
+                            return $post->category->contains('slug', 'news');
+                        });
+                    @endphp
+                    @foreach($listTrending->take(3) as $postTrending)
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="latest-content">
+                                <div class="position-relative block-content-img">
+                                    <a href="" class="content-img content-img-border">
+                                        <img
+                                            src="{{$postTrending->featured_image}}"
+                                            alt="" class="latest-news-img img-height-260">
                                     </a>
-                                </h3>
-                                <div class="latest-news-time-views text-center">
-                                    <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
-                                    <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
+                                    <a href="" class="content-category">
+                                        <span>{{$postTrending->category->first()->title}}</span>
+                                    </a>
+                                </div>
+                                <div class="content pb-0">
+                                    <h3 class="latest-content-title text-center">
+                                        <a href="" class="text-theme-light truncate-2-line">
+                                            <span
+                                                class="title-hover text-capitalize">{{$postTrending->clean_title}}</span>
+                                        </a>
+                                    </h3>
+                                    <div class="latest-news-time-views text-center">
+                                        <a href="#" class="pe-none"><i
+                                                class="fa-solid fa-calendar me-2"></i>{{$postTrending->formatted_date}}
+                                        </a>
+                                        <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="latest-content">
-                            <div class="position-relative block-content-img">
-                                <a href="" class="content-img">
-                                    <img
-                                        src="https://funix.edu.vn/wp-content/uploads/2023/07/Game-HTML5.jpg"
-                                        alt="" class="latest-news-img">
-                                </a>
-                                <a href="" class="content-category">
-                                    <span>GAMING</span>
-                                </a>
-                            </div>
-                            <div class="content pb-0">
-                                <h3 class="latest-content-title text-center">
-                                    <a href="" class="title-hover text-capitalize text-theme-light ">
-                                        PlayStation stars Campaigns and Digital Collectibles 23
-                                    </a>
-                                </h3>
-                                <div class="latest-news-time-views text-center">
-                                    <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
-                                    <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="latest-content">
-                            <div class="position-relative block-content-img">
-                                <a href="" class="content-img">
-                                    <img
-                                        src="https://funix.edu.vn/wp-content/uploads/2023/07/Game-HTML5.jpg"
-                                        alt="" class="latest-news-img">
-                                </a>
-                                <a href="" class="content-category">
-                                    <span>GAMING</span>
-                                </a>
-                            </div>
-                            <div class="content pb-0">
-                                <h3 class="latest-content-title text-center">
-                                    <a href="" class="title-hover text-capitalize text-theme-light ">
-                                        PlayStation stars Campaigns and Digital Collectibles 23
-                                    </a>
-                                </h3>
-                                <div class="latest-news-time-views text-center text-theme-light">
-                                    <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
-                                    <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -224,103 +130,54 @@
                             <div class="title-area mb-4">
                                 <h2 class="text-capitalize fw-semibold header m-0 text-theme-dark">
                                     <img src="https://html.themewant.com/echo/assets/images/icon/01.svg" alt="">
-                                    features
+                                    Editorial
                                 </h2>
                             </div>
                         </div>
                         <div class="col-lg-5">
                             <div class="banner-side p-0">
                                 <ul>
-                                    <li>
-                                        <div class="content p-0 order-2">
-                                            <span class="banner-side-tag text-uppercase fw-bold">GAME GUIDES</span>
-                                            <h3 class="title-latest">
-                                                <a href="" class="title title-hover-white">
-                                                    Jump into Wayfinder 23
+                                    @php
+                                        $listEditorial = $posts->filter(function ($post) {
+                                            return $post->category->contains('slug', 'editorial');
+                                        });
+                                    @endphp
+                                    @foreach($listEditorial->take(5)->skip(1) as $postEditorial)
+                                        <li>
+                                            <div class="content p-0 order-2">
+                                                <h4 class="title-latest">
+                                                    <a href="" class=" truncate-2-line">
+                                                        <span class="title title-hover-white">
+                                                            {{$postEditorial->clean_title}}
+                                                        </span>
+                                                    </a>
+                                                </h4>
+                                                <p class="">
+                                                    <a href="#" class="desc"><i
+                                                            class="fa-solid fa-calendar me-2"></i>{{$postEditorial->formattedDate}}
+                                                    </a>
+                                                </p>
+                                            </div>
+                                            <div class="">
+                                                <a href="" class="latest-banner-img">
+                                                    <img
+                                                        src="{{$postEditorial->featured_image}}"
+                                                        alt="" class="latest-news-img">
                                                 </a>
-                                            </h3>
-                                            <p class="">
-                                                <a href="#" class="desc"><i class="fa-solid fa-calendar me-2"></i>01 Jan
-                                                    2023</a>
-                                            </p>
-                                        </div>
-                                        <div class="">
-                                            <a href="" class="latest-banner-img">
-                                                <img
-                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                                    alt="" class="latest-news-img">
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="content p-0 order-2">
-                                            <span class="banner-side-tag text-uppercase fw-bold">TECHNOLOGY</span>
-                                            <h3 class="title-latest">
-                                                <a href="" class="title title-hover-white">
-                                                    Jump into Wayfinder 23
-                                                </a>
-                                            </h3>
-                                            <p class="">
-                                                <a href="#" class="desc"><i class="fa-solid fa-calendar me-2"></i>01 Jan
-                                                    2023</a>
-                                            </p>
-                                        </div>
-                                        <div class="">
-                                            <a href="" class="latest-banner-img">
-                                                <img
-                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                                    alt="" class="latest-news-img">
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="content p-0 order-2">
-                                            <h3 class="title-latest">
-                                                <a href="" class="title title-hover-white">
-                                                    Jump into Wayfinder 23
-                                                </a>
-                                            </h3>
-                                            <p class="">
-                                                <a href="#" class="desc"><i class="fa-solid fa-calendar me-2"></i>01 Jan
-                                                    2023</a>
-                                            </p>
-                                        </div>
-                                        <div class="">
-                                            <a href="" class="latest-banner-img">
-                                                <img
-                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                                    alt="" class="latest-news-img">
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="content p-0 order-2">
-                                            <h3 class="title-latest">
-                                                <a href="" class="title title-hover-white">
-                                                    Jump into Wayfinder 23
-                                                </a>
-                                            </h3>
-                                            <p class="">
-                                                <a href="#" class="desc"><i class="fa-solid fa-calendar me-2"></i>01 Jan
-                                                    2023</a>
-                                            </p>
-                                        </div>
-                                        <div class="">
-                                            <a href="" class="latest-banner-img">
-                                                <img
-                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                                    alt="" class="latest-news-img">
-                                            </a>
-                                        </div>
-                                    </li>
+                                            </div>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-7 my-lg-0 my-5">
+                            @php
+                                $postEditorialFirst = $listEditorial->first();
+                            @endphp
                             <div class="position-relative block-content-img ">
                                 <a href="" class="content-img img-border text-center">
                                     <img
-                                        src="https://html.themewant.com/echo/assets/images/home-1/latest-news/item-11.png"
+                                        src="{{$postEditorialFirst->featured_image}}"
                                         alt="" class="latest-news-img">
                                 </a>
                                 <a href="" class="content-category">
@@ -330,11 +187,13 @@
                             <div class="content pb-0">
                                 <h3 class="latest-content-title text-center">
                                     <a href="" class="title-hover text-capitalize text-white">
-                                        PlayStation stars Campaigns and Digital Collectibles 23333 3333333333
+                                        {{$postEditorialFirst->clean_title}}
                                     </a>
                                 </h3>
                                 <div class="latest-news-time-views text-center">
-                                    <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
+                                    <a href="#" class="pe-none"><i
+                                            class="fa-solid fa-calendar me-2"></i>{{$postEditorialFirst->formatted_date}}
+                                    </a>
                                     <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
                                 </div>
                             </div>
@@ -399,6 +258,14 @@
     <div class="editor-section">
         <div class="container">
             <div class="row">
+                @php
+                    $listEditorPick = $posts->filter(function ($post) {
+                        return $post->category->contains('slug', 'articles');
+                    });
+                    $postsMain = $listEditorPick->take(4);
+                    $postsPopular = $listEditorPick->skip(4)->take(3);
+                    $postsGallery = $listEditorPick->skip(7)->take(4);
+                @endphp
                 <div class="col-lg-8">
                     <div class="col-lg-12">
                         <div class="title-area mb-4">
@@ -410,106 +277,38 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="latest-content mb-4">
-                                    <div class="position-relative block-content-img">
-                                        <a href="" class="content-img img-border">
-                                            <img
-                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                                alt="" class="latest-news-img img-height-260">
-                                        </a>
-                                        <a href="" class="content-category">
-                                            <span>GAMING</span>
-                                        </a>
-                                    </div>
-                                    <div class="content pb-0">
-                                        <h3 class="latest-content-title text-center">
-                                            <a href="" class="title-hover text-capitalize text-theme-light ">
-                                                Bungie Wins $12 Million In Destiny 2 Anti-Cheat Lawsuit
+                            @foreach($postsMain as $postMain)
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="latest-content mb-4">
+                                        <div class="position-relative block-content-img">
+                                            <a href="" class="content-img img-border">
+                                                <img
+                                                    src="{{$postMain->featured_image}}"
+                                                    alt="" class="latest-news-img img-height-260">
                                             </a>
-                                        </h3>
-                                        <div class="latest-news-time-views text-center">
-                                            <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
-                                            <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
+                                            <a href="" class="content-category">
+                                                <span>{{$postMain->category->first()->title}}</span>
+                                            </a>
+                                        </div>
+                                        <div class="content pb-0">
+                                            <h3 class="latest-content-title text-center">
+                                                <a href="" class="truncate-2-line">
+                                                    <span class="title-hover text-capitalize text-theme-light ">
+                                                        {{$postMain->clean_title}}
+                                                    </span>
+                                                </a>
+                                            </h3>
+                                            <div class="latest-news-time-views text-center">
+                                                <a href="#" class="pe-none"><i
+                                                        class="fa-solid fa-calendar me-2"></i>{{$postMain->formatted_date}}
+                                                </a>
+                                                <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05
+                                                    Comments</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="latest-content mb-4">
-                                    <div class="position-relative block-content-img">
-                                        <a href="" class="content-img img-border">
-                                            <img
-                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                                alt="" class="latest-news-img img-height-260">
-                                        </a>
-                                        <a href="" class="content-category">
-                                            <span>GAMING</span>
-                                        </a>
-                                    </div>
-                                    <div class="content pb-0">
-                                        <h3 class="latest-content-title text-center">
-                                            <a href="" class="title-hover text-capitalize text-theme-light ">
-                                                Bungie Wins $12 Million In Destiny 2 Anti-Cheat Lawsuit
-                                            </a>
-                                        </h3>
-                                        <div class="latest-news-time-views text-center">
-                                            <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
-                                            <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="latest-content mb-4">
-                                    <div class="position-relative block-content-img">
-                                        <a href="" class="content-img img-border">
-                                            <img
-                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                                alt="" class="latest-news-img img-height-260">
-                                        </a>
-                                        <a href="" class="content-category">
-                                            <span>GAMING</span>
-                                        </a>
-                                    </div>
-                                    <div class="content pb-0">
-                                        <h3 class="latest-content-title text-center">
-                                            <a href="" class="title-hover text-capitalize text-theme-light ">
-                                                Bungie Wins $12 Million In Destiny 2 Anti-Cheat Lawsuit
-                                            </a>
-                                        </h3>
-                                        <div class="latest-news-time-views text-center">
-                                            <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
-                                            <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="latest-content mb-4">
-                                    <div class="position-relative block-content-img">
-                                        <a href="" class="content-img img-border">
-                                            <img
-                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                                alt="" class="latest-news-img img-height-260">
-                                        </a>
-                                        <a href="" class="content-category">
-                                            <span>GAMING</span>
-                                        </a>
-                                    </div>
-                                    <div class="content pb-0">
-                                        <h3 class="latest-content-title text-center">
-                                            <a href="" class="title-hover text-capitalize text-theme-light ">
-                                                Bungie Wins $12 Million In Destiny 2 Anti-Cheat Lawsuit
-                                            </a>
-                                        </h3>
-                                        <div class="latest-news-time-views text-center">
-                                            <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
-                                            <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -525,99 +324,95 @@
                         <div class="col-lg-12">
                             <div class="banner-side p-0">
                                 <ul>
-                                    <li>
-                                        <div class="content p-0 order-2">
-                                            <span class="banner-side-tag text-uppercase fw-bold">GAME GUIDES</span>
-                                            <h3 class="">
-                                                <a href="" class="title text-theme-light">
-                                                    Can Players Unlock Na'el In Xenoblade
+                                    @foreach($postsPopular as $postPopular)
+                                        <li>
+                                            <div class="content p-0 order-2">
+                                                <h3 class="">
+                                                    <a href="" class=" truncate-2-line">
+                                                        <span class="title-hover text-capitalize text-theme-light">
+                                                            {{$postPopular->clean_title}}
+                                                        </span>
+                                                    </a>
+                                                </h3>
+                                                <p class="">
+                                                    <a href="#" class="desc"><i
+                                                            class="fa-solid fa-calendar me-2"></i>{{$postPopular->formatted_date}}
+                                                    </a>
+                                                </p>
+                                            </div>
+                                            <div class="">
+                                                <a href="" class="latest-banner-img">
+                                                    <img
+                                                        src="{{$postPopular->featured_image}}"
+                                                        alt="" class="latest-news-img">
                                                 </a>
-                                            </h3>
-                                            <p class="">
-                                                <a href="#" class="desc"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
-                                            </p>
-                                        </div>
-                                        <div class="">
-                                            <a href="" class="latest-banner-img">
-                                                <img
-                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                                    alt="" class="latest-news-img">
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="content p-0 order-2">
-                                            <span class="banner-side-tag text-uppercase fw-bold">GAME GUIDES</span>
-                                            <h3 class="">
-                                                <a href="" class="title text-theme-light">
-                                                    Can Players Unlock Na'el In Xenoblade
-                                                </a>
-                                            </h3>
-                                            <p class="">
-                                                <a href="#" class="desc"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
-                                            </p>
-                                        </div>
-                                        <div class="">
-                                            <a href="" class="latest-banner-img">
-                                                <img
-                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                                    alt="" class="latest-news-img">
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="content p-0 order-2">
-                                            <span class="banner-side-tag text-uppercase fw-bold">GAME GUIDES</span>
-                                            <h3 class="">
-                                                <a href="" class="title text-theme-light">
-                                                    Can Players Unlock Na'el In Xenoblade
-                                                </a>
-                                            </h3>
-                                            <p class="">
-                                                <a href="#" class="desc"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
-                                            </p>
-                                        </div>
-                                        <div class="">
-                                            <a href="" class="latest-banner-img">
-                                                <img
-                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s"
-                                                    alt="" class="latest-news-img">
-                                            </a>
-                                        </div>
-                                    </li>
+                                            </div>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <div class="title-area right mb-4 text-theme-light">
+                            <div class="title-area right my-4 text-theme-light">
                                 <h3 class="text-capitalize">
                                     gallery
                                 </h3>
                             </div>
                             <div class="gallery-widget">
                                 <div class="row g-3">
-                                    <div class="col-6">
-                                        <a href="#" class="gallery-item">
-                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="col-6">
-                                        <a href="#" class="gallery-item">
-                                            <img src="https://funix.edu.vn/wp-content/uploads/2023/07/Game-HTML5.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="col-6">
-                                        <a href="#" class="gallery-item">
-                                            <img src="https://funix.edu.vn/wp-content/uploads/2023/07/Game-HTML5.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="col-6">
-                                        <a href="#" class="gallery-item">
-                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s" alt="">
-                                        </a>
-                                    </div>
+                                    @foreach($postsGallery as $postGallery)
+                                        <div class="col-6">
+                                            <a href="#" class="gallery-item">
+                                                <img src="{{$postGallery->featured_image}}" alt="">
+                                            </a>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-section slide-seciton">
+        <div class="slide-inner"
+             style="background-image: url('https://html.themewant.com/echo/assets/images/home-1/video-left/video-bg2.png') ">
+            <div class="container">
+                <div class="inner-bottom">
+                    @php
+                        $postsSlide = $posts->take(4);
+                    @endphp
+                    <div id="slideContentCarousel" class="carousel slide" data-bs-ride="carousel"
+                         data-bs-interval="5000">
+                        <div class="carousel-inner">
+                            <!-- Slide 1 -->
+                            @foreach($postsSlide as $postSlide)
+                                <div class="carousel-item {{$loop->first ? 'active' : ''}}">
+                                    <div class="slide-content-wrap">
+                                        <span class="badge-tag text-uppercase" style="margin: 0 auto;">{{$postSlide->category->first()->title}}</span>
+                                        <h2 class="title-slide truncate-2-line">
+                                            {{$postSlide->clean_title}}
+                                        </h2>
+                                        <div class="latest-news-time-views p-0 border-0 mb-4">
+                                            <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>{{$postSlide->formatted_date}}</a>
+                                            <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <!-- Static Navigation Controls inside inner-bottom -->
+                        <div class="carousel-controls-custom">
+                            <button class="ctrl-btn prev" type="button" data-bs-target="#slideContentCarousel"
+                                    data-bs-slide="prev">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button class="ctrl-btn next" type="button" data-bs-target="#slideContentCarousel"
+                                    data-bs-slide="next">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -636,74 +431,37 @@
                         </h2>
                     </div>
                     <div class="tip-list mt-4">
-                        <!-- Tip Item 1 -->
-                        <div class="tip-item d-flex gap-4 mb-4">
-                            <div class="tip-img-wrapper flex-shrink-0">
-                                <a href="" class="content-img h-100">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s" alt="" class="tip-img">
-                                </a>
-                            </div>
-                            <div class="tip-content d-flex flex-column justify-content-between py-2">
-                                <div>
-                                    <span class="badge-tag text-uppercase">game guides</span>
-                                </div>
-                                <h3 class="tip-title">
-                                    <a href="" class="title-hover text-theme-light text-capitalize">
-                                        <span class="title-hover">10 Critical Things To Know Before Playing...</span>
+                        @php
+                            $postsTip = $posts->filter(function ($post) {
+                                return $post->category->contains('slug', 'mods');
+                            });
+                            $postsMain = $postsTip->take(3);
+                        @endphp
+                        @foreach($postsMain as $postMain)
+                            <div class="tip-item d-flex gap-4 mb-4">
+                                <div class="tip-img-wrapper flex-shrink-0">
+                                    <a href="" class="content-img h-100">
+                                        <img
+                                            src="{{$postMain->featured_image}}"
+                                            alt="" class="tip-img">
                                     </a>
-                                </h3>
-                                <div class="latest-news-time-views p-0 border-0">
-                                    <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
-                                    <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
+                                </div>
+                                <div class="tip-content d-flex flex-column justify-content-between py-2">
+                                    <div>
+                                        <span class="badge-tag text-uppercase">{{$postMain->category->first()->title}}</span>
+                                    </div>
+                                    <h3 class="tip-title">
+                                        <a href="" class="title-hover text-theme-light text-capitalize truncate-2-line">
+                                            <span class="title-hover">{{$postMain->clean_title}}</span>
+                                        </a>
+                                    </h3>
+                                    <div class="latest-news-time-views p-0 border-0">
+                                        <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>{{$postMain->formated_date}}</a>
+                                        <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Tip Item 2 -->
-                        <div class="tip-item d-flex gap-4 mb-4">
-                            <div class="tip-img-wrapper flex-shrink-0">
-                                <a href="" class="content-img h-100">
-                                    <img src="https://funix.edu.vn/wp-content/uploads/2023/07/Game-HTML5.jpg" alt="" class="tip-img">
-                                </a>
-                            </div>
-                            <div class="tip-content d-flex flex-column justify-content-between py-2">
-                                <div>
-                                    <span class="badge-tag text-uppercase">game guides</span>
-                                </div>
-                                <h3 class="tip-title">
-                                    <a href="" class="title-hover text-theme-light text-capitalize">
-                                        <span class="title-hover">9 Things We Wish We Knew Before Playing...</span>
-                                    </a>
-                                </h3>
-                                <div class="latest-news-time-views p-0 border-0">
-                                    <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
-                                    <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tip Item 3 -->
-                        <div class="tip-item d-flex gap-4 mb-4">
-                            <div class="tip-img-wrapper flex-shrink-0">
-                                <a href="" class="content-img h-100">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s" alt="" class="tip-img">
-                                </a>
-                            </div>
-                            <div class="tip-content d-flex flex-column justify-content-between py-2">
-                                <div>
-                                    <span class="badge-tag text-uppercase">game guides</span>
-                                </div>
-                                <h3 class="tip-title">
-                                    <a href="" class="title-hover text-theme-light text-capitalize">
-                                        <span class="title-hover">14 Tight Samurai Games You Should Play</span>
-                                    </a>
-                                </h3>
-                                <div class="latest-news-time-views p-0 border-0">
-                                    <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>01 Jan 2023</a>
-                                    <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -717,9 +475,11 @@
                     <div class="top-games-widget mt-4">
                         <!-- Large Card -->
                         <div class="top-game-large position-relative rounded-4 overflow-hidden mb-4">
-                            <img src="https://funix.edu.vn/wp-content/uploads/2023/07/Game-HTML5.jpg" alt="" class="top-game-large-bg w-100 h-100">
+                            <img src="https://funix.edu.vn/wp-content/uploads/2023/07/Game-HTML5.jpg" alt=""
+                                 class="top-game-large-bg w-100 h-100">
                             <div class="top-game-large-overlay"></div>
-                            <div class="top-game-large-content d-flex flex-column justify-content-end p-4 position-absolute start-0 top-0 w-100 h-100">
+                            <div
+                                class="top-game-large-content d-flex flex-column justify-content-end p-4 position-absolute start-0 top-0 w-100 h-100">
                                 <div>
                                     <span class="badge-tag text-uppercase">pc game</span>
                                 </div>
@@ -736,9 +496,9 @@
                         <div class="top-game-item d-flex align-items-center p-3 mb-3">
                             <span class="top-game-num">02</span>
                             <div class="top-game-info flex-grow-1">
-                                <h4 class="top-game-title truncate-2-line mb-1">
-                                    <a href="" class="title-hover text-theme-light">
-                                        Forspoken | A Square Enix Open-World RPG...
+                                <h4 class="top-game-title mb-1">
+                                    <a href="" class="text-theme-light truncate-2-line">
+                                        <span class="title-hover">Forspoken | A Square Enix Open-World RPG...</span>
                                     </a>
                                 </h4>
                                 <div class="shares text-muted fs-7">
@@ -749,9 +509,9 @@
                         <div class="top-game-item d-flex align-items-center p-3 mb-3">
                             <span class="top-game-num">03</span>
                             <div class="top-game-info flex-grow-1">
-                                <h4 class="top-game-title truncate-2-line mb-1">
-                                    <a href="" class="title-hover text-theme-light">
-                                        Kerbal Space Program 2 | Your Favorite...
+                                <h4 class="top-game-title mb-1">
+                                    <a href="" class="text-theme-light truncate-2-line">
+                                        <span class="title-hover">Kerbal Space Program 2 | Your Favorite...</span>
                                     </a>
                                 </h4>
                                 <div class="shares text-muted fs-7">
@@ -762,9 +522,9 @@
                         <div class="top-game-item d-flex align-items-center p-3 mb-3">
                             <span class="top-game-num">03</span>
                             <div class="top-game-info flex-grow-1">
-                                <h4 class="top-game-title truncate-2-line mb-1">
-                                    <a href="" class="title-hover text-theme-light">
-                                        Kerbal Space Program 2 | Your Favorite...
+                                <h4 class="top-game-title mb-1">
+                                    <a href="" class="text-theme-light truncate-2-line">
+                                        <span class="title-hover">Kerbal Space Program 2 | Your Favorite...</span>
                                     </a>
                                 </h4>
                                 <div class="shares text-muted fs-7">
@@ -817,7 +577,8 @@
                     <!-- Right Mockup -->
                     <div class="col-lg-6 col-md-5 text-center text-md-end">
                         <div class="mockup-wrapper">
-                            <img src="https://html.themewant.com/echo/assets/images/home-1/cta/phone.png" alt="" class="img-fluid mockup-img">
+                            <img src="https://html.themewant.com/echo/assets/images/home-1/cta/phone.png" alt=""
+                                 class="img-fluid mockup-img">
                         </div>
                     </div>
                 </div>

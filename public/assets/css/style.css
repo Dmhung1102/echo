@@ -614,11 +614,9 @@ i.fa-solid.fa-angle-down {
 
 /*home*/
 .hero-section {
-    background: url(	https://html.themewant.com/echo/assets/images/home-1/hero/banner-bg4.png);
-    background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
-    padding: 65px 0;
+    background: url(https://html.themewant.com/echo/assets/images/home-1/hero/banner-bg4.png) no-repeat center;
+    padding: 60px 0;
 }
 
 .latest-section, .feature-section, .editor-section, .tip-section {
@@ -673,7 +671,8 @@ i.fa-solid.fa-angle-down {
     background-color: #ffffff;
 }
 
-.title-hover:hover, .title-hover-white:hover {
+.title-hover:hover, .title-hover-white:hover,
+a:hover .title-hover, a:hover .title-hover-white {
     background-position: 0 100%;
 }
 
@@ -735,7 +734,7 @@ i.fa-solid.fa-angle-down {
     color: #5E5E5E;
 }
 
-.feature-section .latest-news-time-views a {
+.feature-section .latest-news-time-views a, .slide-inner .latest-news-time-views a{
     color: #ffffff;
 }
 
@@ -819,6 +818,7 @@ i.fa-solid.fa-angle-down {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .title-area {
@@ -1069,12 +1069,15 @@ body.dark-theme .title-area.right::before {
 .badge-tag {
     background: var(--main-color);
     color: #ffffff;
-    padding: 3px 8px;
-    border-radius: 4px;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    display: block;
     font-weight: 700;
-    display: inline-block;
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
+    text-align: center;
+    pointer-events: none;
+    font-size: 14px;
+    line-height: 40px;
 }
 
 .tip-img-wrapper {
@@ -1353,7 +1356,7 @@ body.dark-theme .top-game-num {
     color: rgba(255, 255, 255, 0.4);
 }
 
-.tip-section .latest-news-time-views::before {
+.tip-section .latest-news-time-views::before, .slide-inner .latest-news-time-views::before {
     display: none;
 }
 
@@ -1394,6 +1397,7 @@ body.dark-theme .top-game-num {
 
 .tip-section .tip-title .title-hover {
     font-size: 2.5rem;
+    line-height: 3rem;
 }
 
 .btn-more-end {
@@ -1410,6 +1414,102 @@ body.dark-theme .top-game-num {
     transform: translateX(-50%);
     background: #181823;
     opacity: 0.2;
+}
+
+.slide-inner {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 180px;
+    padding-bottom: 0;
+}
+
+.inner-bottom {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(40px);
+    border-radius: 30px 30px 0 0;
+    text-align: center;
+    margin-top: 200px;
+    padding: 50px 40px 40px;
+}
+
+.title-slide {
+    font-size: 3rem;
+}
+
+/* Custom Carousel Controls */
+.carousel-controls-custom {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 25px;
+}
+
+.ctrl-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+
+.ctrl-btn:hover {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+    color: #ffffff;
+    transform: scale(1.08);
+    box-shadow: 0 4px 15px rgba(255, 73, 98, 0.4);
+}
+
+.ctrl-btn.next {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+.ctrl-btn.next:hover {
+    background-color: #ffffff;
+    color: var(--main-color);
+    border-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Slide Styles */
+@media (max-width: 992px) {
+    .inner-bottom {
+        margin-top: 120px;
+        padding: 40px 24px 30px;
+    }
+    .title-slide {
+        font-size: 2.25rem;
+    }
+    .ctrl-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .inner-bottom {
+        margin-top: 80px;
+        padding: 30px 16px 24px;
+    }
+    .title-slide {
+        font-size: 1.6rem;
+    }
+    .carousel-controls-custom {
+        margin-top: 20px;
+        gap: 12px;
+    }
 }
 
 @media (max-width: 992px) {
@@ -1445,6 +1545,10 @@ body.dark-theme .top-game-num {
     .latest-section, .feature-section, .editor-section,  .tip-section {
         padding: 30px 15px;
     }
+
+    .title-slide {
+        font-size: 2.25rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1455,6 +1559,8 @@ body.dark-theme .top-game-num {
     .header-time {
         display: none;
     }
+
+    .tip-content
 }
 
 @media (max-width: 768px) {
@@ -1480,6 +1586,10 @@ body.dark-theme .top-game-num {
 
     .tip-section .tip-content {
         text-align: center;
+    }
+
+    .title-slide {
+        font-size: 1.75rem;
     }
 }
 
