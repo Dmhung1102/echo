@@ -12,7 +12,7 @@
                 <div class="col-xl-8 col-lg-8">
                     <div class="latest-content">
                         <div class="position-relative block-content-img">
-                            <a href="" class="content-img">
+                            <a href="{{route('detail', ['slug' => $postLatest->slug])}}" class="content-img">
                                 <img
                                     src="{{$postLatest->featured_image}}"
                                     alt="" class="latest-news-img w-100">
@@ -390,7 +390,7 @@
                             @foreach($postsSlide as $postSlide)
                                 <div class="carousel-item {{$loop->first ? 'active' : ''}}">
                                     <div class="slide-content-wrap">
-                                        <span class="badge-tag text-uppercase" style="margin: 0 auto;">{{$postSlide->category->first()->title}}</span>
+                                        <span class="badge-tag text-uppercase" style="margin: 0 auto;">{{$postSlide->category->first()?->title}}</span>
                                         <h2 class="title-slide truncate-2-line">
                                             {{$postSlide->clean_title}}
                                         </h2>
@@ -436,6 +436,7 @@
                                 return $post->category->contains('slug', 'mods');
                             });
                             $postsMain = $postsTip->take(3);
+                            $postsSub = $postsTip->skip(3)->take(4);
                         @endphp
                         @foreach($postsMain as $postMain)
                             <div class="tip-item d-flex gap-4 mb-4">
@@ -456,7 +457,7 @@
                                         </a>
                                     </h3>
                                     <div class="latest-news-time-views p-0 border-0">
-                                        <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>{{$postMain->formated_date}}</a>
+                                        <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>{{$postMain->formatted_date}}</a>
                                         <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
                                     </div>
                                 </div>
@@ -475,17 +476,17 @@
                     <div class="top-games-widget mt-4">
                         <!-- Large Card -->
                         <div class="top-game-large position-relative rounded-4 overflow-hidden mb-4">
-                            <img src="https://funix.edu.vn/wp-content/uploads/2023/07/Game-HTML5.jpg" alt=""
+                            <img src="{{$postsSub->first()->featured_image}}" alt=""
                                  class="top-game-large-bg w-100 h-100">
                             <div class="top-game-large-overlay"></div>
                             <div
                                 class="top-game-large-content d-flex flex-column justify-content-end p-4 position-absolute start-0 top-0 w-100 h-100">
                                 <div>
-                                    <span class="badge-tag text-uppercase">pc game</span>
+                                    <span class="badge-tag text-uppercase">{{$postsSub->first()->category->first()->title}}</span>
                                 </div>
                                 <h3 class="text-white fw-bold mb-2">
                                     <a href="" class="title-hover-white text-white text-capitalize">
-                                        Games Moving Away From Gacha
+                                        {{$postsSub->first()->title}}
                                     </a>
                                 </h3>
                                 <div class="shares text-white-50 fs-7">
@@ -493,45 +494,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="top-game-item d-flex align-items-center p-3 mb-3">
-                            <span class="top-game-num">02</span>
-                            <div class="top-game-info flex-grow-1">
-                                <h4 class="top-game-title mb-1">
-                                    <a href="" class="text-theme-light truncate-2-line">
-                                        <span class="title-hover">Forspoken | A Square Enix Open-World RPG...</span>
-                                    </a>
-                                </h4>
-                                <div class="shares text-muted fs-7">
-                                    <i class="fa-solid fa-share-nodes me-2"></i>100+K Shares
+                        @foreach($postsSub->skip(1) as $post)
+                            <div class="top-game-item d-flex align-items-center p-3 mb-3">
+                                <span class="top-game-num">{{ sprintf('%02d', $loop->iteration + 1) }}</span>
+                                <div class="top-game-info flex-grow-1">
+                                    <h4 class="top-game-title mb-1">
+                                        <a href="" class="text-theme-light truncate-2-line">
+                                            <span class="title-hover">{{$post->title}}</span>
+                                        </a>
+                                    </h4>
+                                    <div class="shares text-muted fs-7">
+                                        <i class="fa-solid fa-share-nodes me-2"></i>100+K Shares
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="top-game-item d-flex align-items-center p-3 mb-3">
-                            <span class="top-game-num">03</span>
-                            <div class="top-game-info flex-grow-1">
-                                <h4 class="top-game-title mb-1">
-                                    <a href="" class="text-theme-light truncate-2-line">
-                                        <span class="title-hover">Kerbal Space Program 2 | Your Favorite...</span>
-                                    </a>
-                                </h4>
-                                <div class="shares text-muted fs-7">
-                                    <i class="fa-solid fa-share-nodes me-2"></i>100+K Shares
-                                </div>
-                            </div>
-                        </div>
-                        <div class="top-game-item d-flex align-items-center p-3 mb-3">
-                            <span class="top-game-num">03</span>
-                            <div class="top-game-info flex-grow-1">
-                                <h4 class="top-game-title mb-1">
-                                    <a href="" class="text-theme-light truncate-2-line">
-                                        <span class="title-hover">Kerbal Space Program 2 | Your Favorite...</span>
-                                    </a>
-                                </h4>
-                                <div class="shares text-muted fs-7">
-                                    <i class="fa-solid fa-share-nodes me-2"></i>100+K Shares
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-12">
