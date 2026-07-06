@@ -34,7 +34,9 @@
                            </span>
                             </h2>
                         </a>
-                        {!! $fetchData->content !!}
+                       <div class="fill-content">
+                           {!! $fetchData->content !!}
+                       </div>
                     </div>
                     <div class="more-news">
                         <div class="row">

@@ -15,26 +15,14 @@ class DetailController extends Controller
         return view('detail', compact('fetchData', 'latestPosts'));
     }
 
-    public function categories()
-    {
-        return view('categories');
-    }
-
-    public function category($category)
-    {
-        return view('category', compact('category'));
-    }
-
     public function test()
     {
-        $fetchDataCate = Category::where('count', '>', 0)->orderBy('count', 'desc')->get();
-        $fetchDataCate->map(function ($cate) {
-            $cate->latest_post = Post::select('id', 'category_id', 'featured_image')
-                ->whereJsonContains('category_id', ['id' => $cate->source_id])
-                ->latest()
-                ->first();
+        $fetchData = Category::where('count', '>', 0)->orderBy('count', 'desc')->take(5)->get();
+        $fetchData->map(function ($category) {
+            $latestPost = Post::whereJsonContains('category_id', $category->source_id)->latest()->first();
+            $category->img_latest_post = $latestPost?->featured_image;
         });
-        dd($fetchDataCate);
-        return view('layout.sidebar_right', compact('fetchDataCate'));
+        dd($fetchData);
+        return view('layout.sidebar_right', compact('fetchData'));
     }
 }

@@ -3,11 +3,14 @@
     --color-primary: #537FE7;
     --text-color: #ffffff;
     --main-color: #FF4962;
-    --sub-text-color: #5E5E5E;
     --bg-section: #ffffff;
     --text-theme-light: #181823;
     --bg-dark: #0f0f1c;
 
+    --black: #181823;
+    --grey: #5E5E5E;
+    --semi-white: #ffffffcc;
+    --white: #ffffff;
     --gray-light-dark-white: #5e5e5e;
     --black-light-dark-white: #181823
 }
@@ -15,16 +18,12 @@
 body.dark-theme {
     --text-color: rgba(255, 255, 255, .8);
     --bg-section: #0f0f1c;
-    --text-theme-light: #ffffff;
-
-    .latest-news-time-views a {
-        color: var(--text-theme-light) !important;
-    }
+    --text-theme-light: var(--white);
 
     .editor-section,
     .tip-section,
     .download-section {
-        background: #181823;
+        background: var(--black);
     }
 
     .editor-section .latest-content {
@@ -32,11 +31,17 @@ body.dark-theme {
     }
 
     .grey-light-dark-white {
-        color: #ffffff;
+        color: var(--white);
+    }
+
+    .black-light-dark-grey {
+        color: var(--semi-white);
     }
 }
 
+.black-light-dark-grey {
 
+}
 body {
     background: #ffffff;
     color: var(--text-color);
@@ -113,7 +118,7 @@ ul {
     transform: translateX(-50%);
     background: #000;
     color: #ffffff;
-    width: 120px;
+    padding: 0 1rem;
     height: 35px;
     display: block;
     font-weight: 500;
@@ -123,7 +128,6 @@ ul {
     line-height: 35px;
     text-transform: uppercase;
 }
-
 
 .grey-light-dark-white {
     color: var(--gray-light-dark-white);
@@ -165,7 +169,7 @@ ul {
 }
 
 .form-newsletter p {
-    color: var(--sub-text-color);
+    color: var(--grey);
 }
 
 .canvas-body-desktop .author {
@@ -489,7 +493,7 @@ i.fa-solid.fa-angle-down {
 .menu-item-link {
     display: block;
     padding: 10px 24px;
-    color: var(--sub-text-color);
+    color: var(--grey);
     font-size: 15px;
     font-weight: 500;
     text-align: left;
@@ -498,7 +502,7 @@ i.fa-solid.fa-angle-down {
 
 .header-menu .dropdown-menu-list li a {
     display: block;
-    color: var(--sub-text-color);
+    color: var(--grey);
     font-size: 15px;
     font-weight: 500;
     text-align: left;
@@ -947,7 +951,7 @@ a:hover .title-hover-white {
     border: 1px solid #5E5E5E6b;
     border-radius: 10px;
     background: transparent;
-    color: var(--sub-text-color);
+    color: var(--grey);
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
@@ -1603,6 +1607,27 @@ body.dark-theme .top-game-num {
     padding: 100px 0;
 }
 
+.fill-content img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+}
+
+.fill-content figure,
+.fill-content .wp-caption {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.fill-content figcaption {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+    text-align: center;
+}
+
 .title-detail {
     line-height: 60px;
     font-size: 40px;
@@ -1619,7 +1644,6 @@ body.dark-theme .top-game-num {
 }
 
 .list-category li {
-    background-image: url('https://www.dsogaming.com/wp-content/uploads/2026/07/Guns-of-Eschaton-feature-1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 70px;
@@ -1673,6 +1697,8 @@ body.dark-theme .top-game-num {
     color: var(--main-color);
 }
 
+
+
 /* More News Section */
 .more-news {
     background-color: #f9f9f9;
@@ -1698,6 +1724,18 @@ body.dark-theme .top-game-num {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.btn-showmore {
+    text-transform: uppercase;
+    padding: 12px 38px;
+    text-align: center;
+    border: 1px solid var(--grey);
+    font-size: 16px;
+    line-height: 30px;
+    margin: 0 auto;
+    font-weight: 700;
+    color: var(--grey);
 }
 
 

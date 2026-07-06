@@ -17,19 +17,18 @@
                                     src="{{$postLatest->featured_image}}"
                                     alt="" class="latest-news-img w-100">
                             </a>
-                            <a href="" class="content-category">
+                            <a href="{{route('category', ['slug' => $postLatest->category->first()->slug])}}" class="content-category">
                                 <span>{{$postLatest->category->first()->title}}</span>
                             </a>
                         </div>
                         <div class="content">
                             <h1 class="latest-content-title text-center">
-                                <a href="" class="title-hover text-capitalize text-content-black">
+                                <a href="{{route('detail', ['slug' => $postLatest->slug])}}" class="title-hover text-capitalize text-content-black">
                                     {{$postLatest->title}}
                                 </a>
                             </h1>
                             <div class="latest-news-time-views text-center">
-                                <a href="#" class="pe-none"><i
-                                        class="fa-solid fa-calendar me-2"></i>{{$postLatest->formatted_date}}</a>
+                                <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>{{$postLatest->formatted_date}}</a>
                                 <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
                                 <a href="#" class="pe-none"><i class="fa-solid fa-pen me-2"></i> John Snow</a>
                             </div>
@@ -44,7 +43,7 @@
                                 <li>
                                     <div class="content p-0">
                                         <h3 class="title-latest">
-                                            <a href="" class="title text-white truncate-2-line">
+                                            <a href="{{route('detail', ['slug' => $post->slug])}}" class="title text-white truncate-2-line">
                                                 <span class="title-hover-white">{{$post->clean_title}}</span>
                                             </a>
                                         </h3>
@@ -54,10 +53,10 @@
                                         </p>
                                     </div>
                                     <div class="">
-                                        <a href="" class="latest-banner-img">
+                                        <a href="{{route('detail', ['slug' => $post->slug])}}" class="latest-banner-img">
                                             <img
                                                 src="{{$post->featured_image}}"
-                                                alt="" class="latest-news-img">
+                                                alt="" class="latest-news-img" loading="lazy">
                                         </a>
                                     </div>
                                 </li>
@@ -72,10 +71,10 @@
         <div class="container">
             <div class="title-area d-flex justify-content-between">
                 <h2 class="text-capitalize fw-semibold text-theme-light header m-0">
-                    <img src="https://html.themewant.com/echo/assets/images/icon/01.svg" alt="">
+                    <img src="https://html.themewant.com/echo/assets/images/icon/01.svg" alt="" loading="lazy">
                     Trending now
                 </h2>
-                <a href="" class="rts-btn see-all-btn">
+                <a href="{{route('category', ['slug' => 'news'])}}" class="rts-btn see-all-btn">
                     See All
                     <i class="bi bi-arrow-right"></i>
                 </a>
@@ -91,18 +90,18 @@
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="latest-content">
                                 <div class="position-relative block-content-img">
-                                    <a href="" class="content-img content-img-border">
+                                    <a href="{{route('detail', ['slug' => $postTrending->slug])}}" class="content-img content-img-border">
                                         <img
                                             src="{{$postTrending->featured_image}}"
-                                            alt="" class="latest-news-img img-height-260">
+                                            alt="" class="latest-news-img img-height-260" loading="lazy">
                                     </a>
-                                    <a href="" class="content-category">
+                                    <a href="{{route('category', ['slug' => $postTrending->category->first()->slug])}}" class="content-category">
                                         <span>{{$postTrending->category->first()->title}}</span>
                                     </a>
                                 </div>
                                 <div class="content pb-0">
                                     <h3 class="latest-content-title text-center">
-                                        <a href="" class="text-theme-light truncate-2-line">
+                                        <a href="{{route('detail', ['slug' => $postTrending->slug])}}" class="black-light-dark-grey truncate-2-line">
                                             <span
                                                 class="title-hover text-capitalize">{{$postTrending->clean_title}}</span>
                                         </a>
@@ -129,7 +128,7 @@
                         <div class="col-lg-12">
                             <div class="title-area mb-4">
                                 <h2 class="text-capitalize fw-semibold header m-0 text-theme-dark">
-                                    <img src="https://html.themewant.com/echo/assets/images/icon/01.svg" alt="">
+                                    <img src="https://html.themewant.com/echo/assets/images/icon/01.svg" alt="" loading="lazy">
                                     Editorial
                                 </h2>
                             </div>
@@ -146,7 +145,7 @@
                                         <li>
                                             <div class="content p-0 order-2">
                                                 <h4 class="title-latest">
-                                                    <a href="" class=" truncate-2-line">
+                                                    <a href="{{route('detail', ['slug' => $postEditorial->slug])}}" class=" truncate-2-line">
                                                         <span class="title title-hover-white">
                                                             {{$postEditorial->clean_title}}
                                                         </span>
@@ -159,10 +158,10 @@
                                                 </p>
                                             </div>
                                             <div class="">
-                                                <a href="" class="latest-banner-img">
+                                                <a href="{{route('detail', ['slug' => $postEditorial->slug])}}" class="latest-banner-img">
                                                     <img
                                                         src="{{$postEditorial->featured_image}}"
-                                                        alt="" class="latest-news-img">
+                                                        alt="" class="latest-news-img" loading="lazy">
                                                 </a>
                                             </div>
                                         </li>
@@ -175,18 +174,18 @@
                                 $postEditorialFirst = $listEditorial->first();
                             @endphp
                             <div class="position-relative block-content-img ">
-                                <a href="" class="content-img img-border text-center">
+                                <a href="{{route('detail', ['slug' => $postEditorialFirst->slug])}}" class="content-img img-border text-center">
                                     <img
                                         src="{{$postEditorialFirst->featured_image}}"
-                                        alt="" class="latest-news-img">
+                                        alt="" class="latest-news-img" loading="lazy">
                                 </a>
-                                <a href="" class="content-category">
+                                <a href="{{route('category', ['slug' => $postEditorialFirst->category->first()->slug])}}" class="content-category">
                                     <span>GAMING</span>
                                 </a>
                             </div>
                             <div class="content pb-0">
                                 <h3 class="latest-content-title text-center">
-                                    <a href="" class="title-hover text-capitalize text-white">
+                                    <a href="{{route('detail', ['slug' => $postEditorialFirst->slug])}}" class="title-hover text-capitalize text-white">
                                         {{$postEditorialFirst->clean_title}}
                                     </a>
                                 </h3>
@@ -248,7 +247,7 @@
                             </li>
                         </ul>
                         <div class="feature-ad">
-                            <img src="https://html.themewant.com/echo/assets/images/home-1/cta/ad-2.png" alt="">
+                            <img src="https://html.themewant.com/echo/assets/images/home-1/cta/ad-2.png" alt="" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -270,7 +269,7 @@
                     <div class="col-lg-12">
                         <div class="title-area mb-4">
                             <h2 class="text-capitalize fw-semibold header m-0 text-theme-light">
-                                <img src="https://html.themewant.com/echo/assets/images/icon/01.svg" alt="">
+                                <img src="https://html.themewant.com/echo/assets/images/icon/01.svg" alt="" loading="lazy">
                                 editor's pick
                             </h2>
                         </div>
@@ -281,18 +280,18 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="latest-content mb-4">
                                         <div class="position-relative block-content-img">
-                                            <a href="" class="content-img img-border">
+                                            <a href="{{route('detail', ['slug' => $postMain->slug])}}" class="content-img img-border">
                                                 <img
                                                     src="{{$postMain->featured_image}}"
-                                                    alt="" class="latest-news-img img-height-260">
+                                                    alt="" class="latest-news-img img-height-260" loading="lazy">
                                             </a>
-                                            <a href="" class="content-category">
+                                            <a href="{{route('category', ['slug' => $postMain->category->first()->slug])}}" class="content-category">
                                                 <span>{{$postMain->category->first()->title}}</span>
                                             </a>
                                         </div>
                                         <div class="content pb-0">
                                             <h3 class="latest-content-title text-center">
-                                                <a href="" class="truncate-2-line">
+                                                <a href="{{route('detail', ['slug' => $postMain->slug])}}" class="truncate-2-line">
                                                     <span class="title-hover text-capitalize text-theme-light ">
                                                         {{$postMain->clean_title}}
                                                     </span>
@@ -328,7 +327,7 @@
                                         <li>
                                             <div class="content p-0 order-2">
                                                 <h3 class="">
-                                                    <a href="" class=" truncate-2-line">
+                                                    <a href="{{route('detail', ['slug' => $postPopular->slug])}}" class=" truncate-2-line">
                                                         <span class="title-hover text-capitalize text-theme-light">
                                                             {{$postPopular->clean_title}}
                                                         </span>
@@ -341,10 +340,10 @@
                                                 </p>
                                             </div>
                                             <div class="">
-                                                <a href="" class="latest-banner-img">
+                                                <a href="{{route('detail', ['slug' => $postPopular->slug])}}" class="latest-banner-img">
                                                     <img
                                                         src="{{$postPopular->featured_image}}"
-                                                        alt="" class="latest-news-img">
+                                                        alt="" class="latest-news-img" loading="lazy">
                                                 </a>
                                             </div>
                                         </li>
@@ -362,8 +361,8 @@
                                 <div class="row g-3">
                                     @foreach($postsGallery as $postGallery)
                                         <div class="col-6">
-                                            <a href="#" class="gallery-item">
-                                                <img src="{{$postGallery->featured_image}}" alt="">
+                                            <a href="{{route('detail', ['slug' => $postGallery->slug])}}" class="gallery-item">
+                                                <img src="{{$postGallery->featured_image}}" alt="" loading="lazy">
                                             </a>
                                         </div>
                                     @endforeach
@@ -390,9 +389,13 @@
                             @foreach($postsSlide as $postSlide)
                                 <div class="carousel-item {{$loop->first ? 'active' : ''}}">
                                     <div class="slide-content-wrap">
-                                        <span class="badge-tag text-uppercase" style="margin: 0 auto;">{{$postSlide->category->first()?->title}}</span>
+                                        <a href="{{route('category', ['slug' => $postSlide->category->first()->slug])}}">
+                                            <span class="badge-tag text-uppercase" style="margin: 0 auto;">{{$postSlide->category->first()?->title}}</span>
+                                        </a>
                                         <h2 class="title-slide truncate-2-line">
-                                            {{$postSlide->clean_title}}
+                                            <a href="{{route('detail', ['slug' => $postSlide->slug])}}" class="text-white">
+                                                {{$postSlide->clean_title}}
+                                            </a>
                                         </h2>
                                         <div class="latest-news-time-views p-0 border-0 mb-4">
                                             <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>{{$postSlide->formatted_date}}</a>
@@ -441,18 +444,20 @@
                         @foreach($postsMain as $postMain)
                             <div class="tip-item d-flex gap-4 mb-4">
                                 <div class="tip-img-wrapper flex-shrink-0">
-                                    <a href="" class="content-img h-100">
+                                    <a href="{{route('detail', ['slug' => $postMain->slug])}}" class="content-img h-100">
                                         <img
                                             src="{{$postMain->featured_image}}"
-                                            alt="" class="tip-img">
+                                            alt="" class="tip-img" loading="lazy">
                                     </a>
                                 </div>
                                 <div class="tip-content d-flex flex-column justify-content-between py-2">
                                     <div>
-                                        <span class="badge-tag text-uppercase">{{$postMain->category->first()->title}}</span>
+                                        <a href="{{route('category', ['slug' => $postMain->category->first()->slug])}}">
+                                            <span class="badge-tag text-uppercase">{{$postMain->category->first()->title}}</span>
+                                        </a>
                                     </div>
                                     <h3 class="tip-title">
-                                        <a href="" class="title-hover text-theme-light text-capitalize truncate-2-line">
+                                        <a href="{{route('detail', ['slug' => $postMain->slug])}}" class="title-hover text-theme-light text-capitalize truncate-2-line">
                                             <span class="title-hover">{{$postMain->clean_title}}</span>
                                         </a>
                                     </h3>
@@ -477,15 +482,17 @@
                         <!-- Large Card -->
                         <div class="top-game-large position-relative rounded-4 overflow-hidden mb-4">
                             <img src="{{$postsSub->first()->featured_image}}" alt=""
-                                 class="top-game-large-bg w-100 h-100">
+                                 class="top-game-large-bg w-100 h-100" loading="lazy">
                             <div class="top-game-large-overlay"></div>
                             <div
                                 class="top-game-large-content d-flex flex-column justify-content-end p-4 position-absolute start-0 top-0 w-100 h-100">
                                 <div>
-                                    <span class="badge-tag text-uppercase">{{$postsSub->first()->category->first()->title}}</span>
+                                    <a href="{{route('category', ['slug' => $postsSub->first()->category->first()->slug])}}">
+                                        <span class="badge-tag text-uppercase">{{$postsSub->first()->category->first()->title}}</span>
+                                    </a>
                                 </div>
                                 <h3 class="text-white fw-bold mb-2">
-                                    <a href="" class="title-hover-white text-white text-capitalize">
+                                    <a href="{{route('detail', ['slug' => $postsSub->first()->slug])}}" class="title-hover-white text-white text-capitalize">
                                         {{$postsSub->first()->title}}
                                     </a>
                                 </h3>
@@ -499,7 +506,7 @@
                                 <span class="top-game-num">{{ sprintf('%02d', $loop->iteration + 1) }}</span>
                                 <div class="top-game-info flex-grow-1">
                                     <h4 class="top-game-title mb-1">
-                                        <a href="" class="text-theme-light truncate-2-line">
+                                        <a href="{{route('detail', ['slug' => $post->slug])}}" class="text-theme-light truncate-2-line">
                                             <span class="title-hover">{{$post->title}}</span>
                                         </a>
                                     </h4>
@@ -513,7 +520,7 @@
                 </div>
                 <div class="col-12">
                     <div class="text-center pt-4 btn-more-end">
-                        <a href="#" class="rts-btn see-all-btn">
+                        <a href="{{route('category', ['slug' => 'mods'])}}" class="rts-btn see-all-btn">
                             Show More <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -555,7 +562,7 @@
                     <div class="col-lg-6 col-md-5 text-center text-md-end">
                         <div class="mockup-wrapper">
                             <img src="https://html.themewant.com/echo/assets/images/home-1/cta/phone.png" alt=""
-                                 class="img-fluid mockup-img">
+                                 class="img-fluid mockup-img" loading="lazy">
                         </div>
                     </div>
                 </div>

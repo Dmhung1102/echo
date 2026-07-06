@@ -6,7 +6,7 @@
                     <div class="col-xl-4 col-lg-4 d-none d-lg-block">
                         <div class="d-flex align-items-center gap-3 align-items-center">
                             <div class="header-meta-icon">
-                                <img src="assets/img/icon/home-4-header-top.svg" alt="icon">
+                                <img src="https://html.themewant.com/echo/assets/images/home-1/header-top/home-4-header-top.svg" alt="icon">
                             </div>
                             <div class="header-meta-text">
                                 <div class="fw-bold text-truncate-custom">
@@ -86,7 +86,9 @@
             <div class="row align-items-center">
                 <div class="col-xl-2 col-lg-2 col-md-7 col-sm-7 col-7">
                     <div class="logo">
-                        <img src="https://html.themewant.com/echo/assets/images/home-1/site-logo/site-logo4.svg" alt="">
+                        <a href="{{route('home')}}">
+                            <img src="https://html.themewant.com/echo/assets/images/home-1/site-logo/site-logo4.svg" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7 d-none d-lg-block">

@@ -1,3 +1,4 @@
+@php use App\Models\Category;use App\Models\Post; @endphp
 <div class="">
     <div class="detail-sidebar">
         <div class="row">
@@ -9,21 +10,16 @@
         </div>
         <div class="">
             <ul class="list-category">
-                <li class="text-white text-center">
-                    <h4>Fashion & Life Style</h4>
-                </li>
-                <li class="text-white text-center">
-                    <h4>Relationship</h4>
-                </li>
-                <li class="text-white text-center">
-                    <h4>Art & Culture</h4>
-                </li>
-                <li class="text-white text-center">
-                    <h4>Self Development</h4>
-                </li>
-                <li class="text-white text-center">
-                    <h4>travel & tourism</h4>
-                </li>
+                @foreach(Category::getCategoriesSideBar() as $category)
+                    <li class="text-white text-center"
+                        style="background-image: url('{{ $category->img_latest_post }}')">
+                        <h4>
+                            <a href="{{route('category', ['slug' => $category->slug])}}" class="text-white">
+                                {{ $category->title }}
+                            </a>
+                        </h4>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -38,86 +34,29 @@
         <div class="">
             <div class="banner-side p-0" style="background: unset">
                 <ul>
-                    <li>
-                        <div class="content p-0 order-2">
-                            <h4 class="">
-                                <a href="" class=" truncate-2-line">
-                                                    <span class="title-hover text-capitalize text-theme-light">
-                                                        14 Tight Samurai Games You...
-                                                    </span>
+                    @foreach(Post::getLatestPosts(4) as $post)
+                        <li>
+                            <div class="content p-0 order-2">
+                                <h4 class="">
+                                    <a href="{{route('detail', ['slug' => $post->slug])}}" class=" truncate-2-line">
+                                        <span class="title-hover text-capitalize text-theme-light">
+                                            {{$post->title}}
+                                        </span>
+                                    </a>
+                                </h4>
+                                <p class="text-black">
+                                    <i class="bi bi-clock-history"></i> 06 minute read
+                                </p>
+                            </div>
+                            <div class="">
+                                <a href="{{route('detail', ['slug' => $post->slug])}}" class="latest-banner-img rounded-0">
+                                    <img
+                                        src="{{$post->featured_image}}"
+                                        alt="" class="latest-news-img">
                                 </a>
-                            </h4>
-                            <p class="text-black">
-                                <i class="bi bi-clock-history"></i> 06 minute read
-                            </p>
-                        </div>
-                        <div class="">
-                            <a href="" class="latest-banner-img rounded-0">
-                                <img src="https://www.dsogaming.com/wp-content/uploads/2026/07/Guns-of-Eschaton-feature-1.jpg"
-                                     alt="" class="latest-news-img">
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="content p-0 order-2">
-                            <h4 class="">
-                                <a href="" class=" truncate-2-line">
-                                                    <span class="title-hover text-capitalize text-theme-light">
-                                                        14 Tight Samurai Games You...
-                                                    </span>
-                                </a>
-                            </h4>
-                            <p class="text-black">
-                                <i class="bi bi-clock-history"></i> 06 minute read
-                            </p>
-                        </div>
-                        <div class="">
-                            <a href="" class="latest-banner-img rounded-0">
-                                <img src="https://www.dsogaming.com/wp-content/uploads/2026/07/Guns-of-Eschaton-feature-1.jpg"
-                                     alt="" class="latest-news-img">
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="content p-0 order-2">
-                            <h4 class="">
-                                <a href="" class=" truncate-2-line">
-                                                    <span class="title-hover text-capitalize text-theme-light">
-                                                        14 Tight Samurai Games You...
-                                                    </span>
-                                </a>
-                            </h4>
-                            <p class="text-black">
-                                <i class="bi bi-clock-history"></i> 06 minute read
-                            </p>
-                        </div>
-                        <div class="">
-                            <a href="" class="latest-banner-img rounded-0">
-                                <img src="https://www.dsogaming.com/wp-content/uploads/2026/07/Guns-of-Eschaton-feature-1.jpg"
-                                     alt="" class="latest-news-img">
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="content p-0 order-2">
-                            <h4 class="">
-                                <a href="" class=" truncate-2-line">
-                                                    <span class="title-hover text-capitalize text-theme-light">
-                                                        14 Tight Samurai Games You...
-                                                    </span>
-                                </a>
-                            </h4>
-                            <p class="text-black">
-                                <i class="bi bi-clock-history"></i> 06 minute read
-                            </p>
-                        </div>
-                        <div class="">
-                            <a href="" class="latest-banner-img rounded-0">
-                                <img src="https://www.dsogaming.com/wp-content/uploads/2026/07/Guns-of-Eschaton-feature-1.jpg"
-                                     alt="" class="latest-news-img">
-                            </a>
-                        </div>
-                    </li>
+                            </div>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
