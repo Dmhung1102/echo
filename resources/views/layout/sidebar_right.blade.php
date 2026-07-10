@@ -3,7 +3,7 @@
     <div class="detail-sidebar">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="text-content-black text-center">
+                <h3 class="black-light-dark-white text-center">
                     Popular Categories
                 </h3>
             </div>
@@ -26,7 +26,7 @@
     <div class="detail-sidebar">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="text-content-black text-center">
+                <h3 class="black-light-dark-white text-center">
                     Top Story
                 </h3>
             </div>
@@ -38,21 +38,23 @@
                         <li>
                             <div class="content p-0 order-2">
                                 <h4 class="">
-                                    <a href="{{route('detail', ['slug' => $post->slug])}}" class=" truncate-2-line">
-                                        <span class="title-hover text-capitalize text-theme-light">
-                                            {{$post->title}}
+                                    <a href="{{route('detail', ['slug' => $post->slug])}}"
+                                       class=" truncate-2-line black-light-dark-white">
+                                        <span class="hover-black-white text-capitalize ">
+                                            {{$post->clean_title}}
                                         </span>
                                     </a>
                                 </h4>
                                 <p class="text-black">
-                                    <i class="bi bi-clock-history"></i> 06 minute read
+                                    <i class="bi bi-clock-history"></i> {{$post->formatted_date}}
                                 </p>
                             </div>
                             <div class="">
-                                <a href="{{route('detail', ['slug' => $post->slug])}}" class="latest-banner-img rounded-0">
+                                <a href="{{route('detail', ['slug' => $post->slug])}}"
+                                   class="latest-banner-img rounded-0">
                                     <img
                                         src="{{$post->featured_image}}"
-                                        alt="" class="latest-news-img">
+                                        alt="" class="latest-news-img" loading="lazy">
                                 </a>
                             </div>
                         </li>
@@ -66,7 +68,7 @@
     <div class="detail-sidebar">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="text-content-black text-center">
+                <h3 class="black-light-dark-white text-center">
                     Follow Us
                 </h3>
             </div>
@@ -81,7 +83,7 @@
                 </li>
                 <li>
                     <a href="" class="social-follow">
-                        <i class="fa-brands fa-twitterme-1"></i>
+                        <i class="bi bi-twitter"></i>
                         10K Followers
                     </a>
                 </li>
@@ -106,7 +108,7 @@
                 <li>
                     <a href="" class="social-follow">
                         <i class="fa-brands fa-youtube me-1"></i>
-                        04K Subscriber
+                        4K Subscriber
                     </a>
                 </li>
             </ul>

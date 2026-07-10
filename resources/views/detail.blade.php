@@ -26,10 +26,10 @@
                              src="{{$fetchData->featured_image}}"
                              alt="">
                     </div>
-                    <div class="content text-content-black">
-                        <a href="#" class="my-4">
+                    <div class="content black-light-dark-white">
+                        <a href="{{route('detail', ['slug' => $fetchData->slug])}}" class="my-4">
                             <h2 class="">
-                           <span class="title-hover text-capitalize text-content-black title-detail">
+                           <span class="title-hover text-capitalize black-light-dark-white title-detail">
                                 {{$fetchData->clean_title}}
                            </span>
                             </h2>
@@ -38,10 +38,22 @@
                            {!! $fetchData->content !!}
                        </div>
                     </div>
+                    @if($fetchData->tag)
+                        <div class="detail-tags d-flex flex-wrap align-items-center gap-1">
+                            <h4 class="text-capitalize black-light-dark-white mb-0 me-2">
+                                tags:
+                            </h4>
+                            @foreach($fetchData->tag as $tag)
+                                <a href="{{route('tag', ['slug' => $tag->slug])}}">
+                                    <div class="gray-light-dark-white tags-item">{{$tag->title}}</div>
+                                </a>
+                            @endforeach
+                        </div>
+                    @endif
                     <div class="more-news">
                         <div class="row">
                             <div class="col-lg-12">
-                                <h3 class="text-content-black mb-4 fs-3">You Might Also Like</h3>
+                                <h3 class="black-light-dark-white mb-4 fs-3">You Might Also Like</h3>
                             </div>
                         </div>
                         <div class="row">
@@ -53,12 +65,14 @@
                                         </a>
                                         <div class="more-news-content">
                                             <h4>
-                                                <a href="#" class="title-hover text-content-black">
-                                                    ChatGPT returns to Italy after ban
+                                                <a href="{{route('detail', ['slug' => $posts->slug])}}" class="black-light-dark-white truncate-2-line">
+                                                   <span class="hover-black-white">
+                                                       {{$posts->clean_title}}
+                                                   </span>
                                                 </a>
                                             </h4>
-                                            <span class="text-black">
-                                            <i class="fa-regular fa-clock me-1"></i> 06 minute read
+                                            <span class="black-light-dark-white">
+                                            <i class="fa-regular fa-clock me-1"></i> {{$posts->formatted_date}}
                                         </span>
                                         </div>
                                     </div>

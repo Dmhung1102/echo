@@ -3,34 +3,33 @@
     Home
 @endsection
 @section('content')
-    @php
-        $postLatest = $posts->first();
-    @endphp
     <div class="hero-section">
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 col-lg-8">
                     <div class="latest-content">
                         <div class="position-relative block-content-img">
-                            <a href="{{route('detail', ['slug' => $postLatest->slug])}}" class="content-img">
+                            <a href="{{route('detail', ['slug' => $postsHero->first()->slug])}}" class="content-img">
                                 <img
-                                    src="{{$postLatest->featured_image}}"
+                                    src="{{$postsHero->first()->featured_image}}"
                                     alt="" class="latest-news-img w-100">
                             </a>
-                            <a href="{{route('category', ['slug' => $postLatest->category->first()->slug])}}" class="content-category">
-                                <span>{{$postLatest->category->first()->title}}</span>
+                            <a href="{{route('category', ['slug' => $postsHero->first()->category->first()->slug])}}" class="content-category">
+                                <span>{{$postsHero->first()->category->first()->title}}</span>
                             </a>
                         </div>
                         <div class="content">
                             <h1 class="latest-content-title text-center">
-                                <a href="{{route('detail', ['slug' => $postLatest->slug])}}" class="title-hover text-capitalize text-content-black">
-                                    {{$postLatest->title}}
+                                <a href="{{route('detail', ['slug' => $postsHero->first()->slug])}}" class="title-hover text-capitalize text-black">
+                                    {{$postsHero->first()->title}}
                                 </a>
                             </h1>
                             <div class="latest-news-time-views text-center">
-                                <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>{{$postLatest->formatted_date}}</a>
-                                <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
-                                <a href="#" class="pe-none"><i class="fa-solid fa-pen me-2"></i> John Snow</a>
+                                <a href="#" class="pe-none" style="color: #5E5E5E"><i class="bi bi-calendar-fill me-2"></i>{{$postsHero->first()->formatted_date}}</a>
+                                <a href="{{route('tag', ['slug' => $postsHero->first()->tag->first()->slug])}}" class="" style="color: #5E5E5E">
+                                    <i class="bi bi-tag-fill me-2"></i>{{$postsHero->first()->tag->first()->title}}
+                                </a>
+{{--                                <a href="#" class="pe-none"><i class="fa-solid fa-pen me-2"></i> John Snow</a>--}}
                             </div>
 
                         </div>
@@ -39,7 +38,7 @@
                 <div class="col-xl-4 col-lg-4">
                     <div class="banner-side">
                         <ul>
-                            @foreach($posts->take(5)->skip(1) as $post)
+                            @foreach($postsHero->skip(1) as $post)
                                 <li>
                                     <div class="content p-0">
                                         <h3 class="title-latest">
@@ -48,8 +47,7 @@
                                             </a>
                                         </h3>
                                         <p class="">
-                                            <a href="#" class="desc"><i
-                                                    class="fa-solid fa-calendar me-2"></i>{{$post->formatted_date}}</a>
+                                            <i class="bi bi-calendar-fill me-2"></i>{{$post->formatted_date}}
                                         </p>
                                     </div>
                                     <div class="">
@@ -81,12 +79,7 @@
             </div>
             <div class="content-area">
                 <div class="row">
-                    @php
-                        $listTrending = $posts->filter(function ($post) {
-                            return $post->category->contains('slug', 'news');
-                        });
-                    @endphp
-                    @foreach($listTrending->take(3) as $postTrending)
+                    @foreach($postsTrending->take(3) as $postTrending)
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="latest-content">
                                 <div class="position-relative block-content-img">
@@ -101,16 +94,16 @@
                                 </div>
                                 <div class="content pb-0">
                                     <h3 class="latest-content-title text-center">
-                                        <a href="{{route('detail', ['slug' => $postTrending->slug])}}" class="black-light-dark-grey truncate-2-line">
+                                        <a href="{{route('detail', ['slug' => $postTrending->slug])}}" class="black-light-dark-white truncate-2-line">
                                             <span
-                                                class="title-hover text-capitalize">{{$postTrending->clean_title}}</span>
+                                                class="hover-black-white text-capitalize">{{$postTrending->clean_title}}</span>
                                         </a>
                                     </h3>
                                     <div class="latest-news-time-views text-center">
-                                        <a href="#" class="pe-none"><i
-                                                class="fa-solid fa-calendar me-2"></i>{{$postTrending->formatted_date}}
+                                        <a href="#" class="pe-none gray-light-dark-white"><i class="bi bi-calendar-fill me-2"></i>{{$postTrending->formatted_date}}
                                         </a>
-                                        <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
+                                        <a href="{{route('tag', ['slug' => $postTrending->tag->first()->slug])}}" class="gray-light-dark-white"> <i class="bi bi-tag-fill me-2"></i>{{$postTrending->tag->first()->title}}
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -136,31 +129,25 @@
                         <div class="col-lg-5">
                             <div class="banner-side p-0">
                                 <ul>
-                                    @php
-                                        $listEditorial = $posts->filter(function ($post) {
-                                            return $post->category->contains('slug', 'editorial');
-                                        });
-                                    @endphp
-                                    @foreach($listEditorial->take(5)->skip(1) as $postEditorial)
+                                    @foreach($postsFeature->skip(1) as $posts)
                                         <li>
                                             <div class="content p-0 order-2">
                                                 <h4 class="title-latest">
-                                                    <a href="{{route('detail', ['slug' => $postEditorial->slug])}}" class=" truncate-2-line">
+                                                    <a href="{{route('detail', ['slug' => $posts->slug])}}" class=" truncate-2-line">
                                                         <span class="title title-hover-white">
-                                                            {{$postEditorial->clean_title}}
+                                                            {{$posts->clean_title}}
                                                         </span>
                                                     </a>
                                                 </h4>
                                                 <p class="">
-                                                    <a href="#" class="desc"><i
-                                                            class="fa-solid fa-calendar me-2"></i>{{$postEditorial->formattedDate}}
+                                                    <a href="#" class="desc"><i class="bi bi-calendar-fill me-2"></i>{{$posts->formattedDate}}
                                                     </a>
                                                 </p>
                                             </div>
                                             <div class="">
-                                                <a href="{{route('detail', ['slug' => $postEditorial->slug])}}" class="latest-banner-img">
+                                                <a href="{{route('detail', ['slug' => $posts->slug])}}" class="latest-banner-img">
                                                     <img
-                                                        src="{{$postEditorial->featured_image}}"
+                                                        src="{{$posts->featured_image}}"
                                                         alt="" class="latest-news-img" loading="lazy">
                                                 </a>
                                             </div>
@@ -171,29 +158,30 @@
                         </div>
                         <div class="col-lg-7 my-lg-0 my-5">
                             @php
-                                $postEditorialFirst = $listEditorial->first();
+                                $postFeatureLatest = $postsFeature->first();
                             @endphp
                             <div class="position-relative block-content-img ">
-                                <a href="{{route('detail', ['slug' => $postEditorialFirst->slug])}}" class="content-img img-border text-center">
+                                <a href="{{route('detail', ['slug' => $postFeatureLatest->slug])}}" class="content-img img-border text-center">
                                     <img
-                                        src="{{$postEditorialFirst->featured_image}}"
+                                        src="{{$postFeatureLatest->featured_image}}"
                                         alt="" class="latest-news-img" loading="lazy">
                                 </a>
-                                <a href="{{route('category', ['slug' => $postEditorialFirst->category->first()->slug])}}" class="content-category">
-                                    <span>GAMING</span>
+                                <a href="{{route('category', ['slug' => $postFeatureLatest->category->first()->slug])}}" class="content-category">
+                                    <span> {{$postFeatureLatest->category->first()->title}}</span>
                                 </a>
                             </div>
                             <div class="content pb-0">
                                 <h3 class="latest-content-title text-center">
-                                    <a href="{{route('detail', ['slug' => $postEditorialFirst->slug])}}" class="title-hover text-capitalize text-white">
-                                        {{$postEditorialFirst->clean_title}}
+                                    <a href="{{route('detail', ['slug' => $postFeatureLatest->slug])}}" class="title-hover-white text-capitalize text-white">
+                                        {{$postFeatureLatest->clean_title}}
                                     </a>
                                 </h3>
                                 <div class="latest-news-time-views text-center">
-                                    <a href="#" class="pe-none"><i
-                                            class="fa-solid fa-calendar me-2"></i>{{$postEditorialFirst->formatted_date}}
+                                    <a href="#" class="pe-none"><i class="bi bi-calendar-fill me-2"></i>{{$postFeatureLatest->formatted_date}}
                                     </a>
-                                    <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
+                                    @if($postFeatureLatest->tag->isNotEmpty())
+                                        <a href="{{route('tag', ['slug' => $postFeatureLatest->tag->first()->slug])}}" class=""><i class="bi bi-tag-fill me-2"></i>{{$postFeatureLatest->tag->first()?->title}}</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -257,14 +245,6 @@
     <div class="editor-section">
         <div class="container">
             <div class="row">
-                @php
-                    $listEditorPick = $posts->filter(function ($post) {
-                        return $post->category->contains('slug', 'articles');
-                    });
-                    $postsMain = $listEditorPick->take(4);
-                    $postsPopular = $listEditorPick->skip(4)->take(3);
-                    $postsGallery = $listEditorPick->skip(7)->take(4);
-                @endphp
                 <div class="col-lg-8">
                     <div class="col-lg-12">
                         <div class="title-area mb-4">
@@ -276,7 +256,7 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="row">
-                            @foreach($postsMain as $postMain)
+                            @foreach($postsEditor->take(4) as $postMain)
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="latest-content mb-4">
                                         <div class="position-relative block-content-img">
@@ -291,18 +271,18 @@
                                         </div>
                                         <div class="content pb-0">
                                             <h3 class="latest-content-title text-center">
-                                                <a href="{{route('detail', ['slug' => $postMain->slug])}}" class="truncate-2-line">
-                                                    <span class="title-hover text-capitalize text-theme-light ">
+                                                <a href="{{route('detail', ['slug' => $postMain->slug])}}" class="truncate-2-line black-light-dark-white">
+                                                    <span class="hover-black-white text-capitalize">
                                                         {{$postMain->clean_title}}
                                                     </span>
                                                 </a>
                                             </h3>
                                             <div class="latest-news-time-views text-center">
-                                                <a href="#" class="pe-none"><i
-                                                        class="fa-solid fa-calendar me-2"></i>{{$postMain->formatted_date}}
+                                                <a href="#" class="pe-none gray-light-dark-white"><i class="bi bi-calendar-fill me-2"></i>{{$postMain->formatted_date}}
                                                 </a>
-                                                <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05
-                                                    Comments</a>
+                                                @if($postMain->tag->isNotEmpty())
+                                                    <a href="{{route('tag', ['slug' => $postMain->tag->first()->slug])}}" class="gray-light-dark-white"><i class="bi bi-tag-fill me-2"></i>{{$postMain->tag->first()->title}}</a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -323,20 +303,19 @@
                         <div class="col-lg-12">
                             <div class="banner-side p-0">
                                 <ul>
-                                    @foreach($postsPopular as $postPopular)
+                                    @foreach($postsEditor->skip(4)->take(3) as $postPopular)
                                         <li>
                                             <div class="content p-0 order-2">
                                                 <h3 class="">
-                                                    <a href="{{route('detail', ['slug' => $postPopular->slug])}}" class=" truncate-2-line">
-                                                        <span class="title-hover text-capitalize text-theme-light">
+                                                    <a href="{{route('detail', ['slug' => $postPopular->slug])}}" class=" truncate-2-line black-light-dark-white ">
+                                                        <span class="text-capitalize hover-black-white">
                                                             {{$postPopular->clean_title}}
                                                         </span>
                                                     </a>
                                                 </h3>
-                                                <p class="">
-                                                    <a href="#" class="desc"><i
-                                                            class="fa-solid fa-calendar me-2"></i>{{$postPopular->formatted_date}}
-                                                    </a>
+                                                <p class="gray-light-dark-white">
+                                                    <i
+                                                        class="fa-solid fa-calendar me-2"></i>{{$postPopular->formatted_date}}
                                                 </p>
                                             </div>
                                             <div class="">
@@ -359,7 +338,7 @@
                             </div>
                             <div class="gallery-widget">
                                 <div class="row g-3">
-                                    @foreach($postsGallery as $postGallery)
+                                    @foreach($postsEditor->skip(7) as $postGallery)
                                         <div class="col-6">
                                             <a href="{{route('detail', ['slug' => $postGallery->slug])}}" class="gallery-item">
                                                 <img src="{{$postGallery->featured_image}}" alt="" loading="lazy">
@@ -379,14 +358,11 @@
              style="background-image: url('https://html.themewant.com/echo/assets/images/home-1/video-left/video-bg2.png') ">
             <div class="container">
                 <div class="inner-bottom">
-                    @php
-                        $postsSlide = $posts->take(4);
-                    @endphp
                     <div id="slideContentCarousel" class="carousel slide" data-bs-ride="carousel"
                          data-bs-interval="5000">
                         <div class="carousel-inner">
                             <!-- Slide 1 -->
-                            @foreach($postsSlide as $postSlide)
+                            @foreach($postsHero as $postSlide)
                                 <div class="carousel-item {{$loop->first ? 'active' : ''}}">
                                     <div class="slide-content-wrap">
                                         <a href="{{route('category', ['slug' => $postSlide->category->first()->slug])}}">
@@ -398,8 +374,10 @@
                                             </a>
                                         </h2>
                                         <div class="latest-news-time-views p-0 border-0 mb-4">
-                                            <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>{{$postSlide->formatted_date}}</a>
-                                            <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
+                                            <a href="#" class="pe-none gray-light-dark-white"><i class="bi bi-calendar-fill me-2"></i>{{$postSlide->formatted_date}}</a>
+                                            @if($postSlide->tag->isNotEmpty())
+                                                <a href="{{route('tag', ['slug' => $postSlide->tag->first()->slug])}}" class="gray-light-dark-white"><i class="bi bi-tag-fill me-2"></i>{{$postSlide->tag->first()?->title}}</a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -435,9 +413,6 @@
                     </div>
                     <div class="tip-list mt-4">
                         @php
-                            $postsTip = $posts->filter(function ($post) {
-                                return $post->category->contains('slug', 'mods');
-                            });
                             $postsMain = $postsTip->take(3);
                             $postsSub = $postsTip->skip(3)->take(4);
                         @endphp
@@ -457,13 +432,13 @@
                                         </a>
                                     </div>
                                     <h3 class="tip-title">
-                                        <a href="{{route('detail', ['slug' => $postMain->slug])}}" class="title-hover text-theme-light text-capitalize truncate-2-line">
-                                            <span class="title-hover">{{$postMain->clean_title}}</span>
+                                        <a href="{{route('detail', ['slug' => $postMain->slug])}}" class="black-light-dark-white text-capitalize truncate-2-line">
+                                            <span class="title-hover hover-black-white">{{$postMain->clean_title}}</span>
                                         </a>
                                     </h3>
                                     <div class="latest-news-time-views p-0 border-0">
-                                        <a href="#" class="pe-none"><i class="fa-solid fa-calendar me-2"></i>{{$postMain->formatted_date}}</a>
-                                        <a href="#" class="pe-none"><i class="fa-solid fa-comment me-2"></i> 05 Comments</a>
+                                        <a href="#" class="pe-none gray-light-dark-white"><i class="bi bi-calendar-fill me-2"></i>{{$postMain->formatted_date}}</a>
+                                        <a href="{{route('tag', ['slug' => $postMain->tag->first()->slug])}}" class="gray-light-dark-white"><i class="bi bi-tag-fill me-2"></i>{{$postMain->tag->first()->title}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -487,32 +462,34 @@
                             <div
                                 class="top-game-large-content d-flex flex-column justify-content-end p-4 position-absolute start-0 top-0 w-100 h-100">
                                 <div>
-                                    <a href="{{route('category', ['slug' => $postsSub->first()->category->first()->slug])}}">
+                                    <a href="{{route('category', ['slug' => $postsSub->first()->category->first()->slug])}}" class="position-absolute" style="top: 2rem">
                                         <span class="badge-tag text-uppercase">{{$postsSub->first()->category->first()->title}}</span>
                                     </a>
                                 </div>
                                 <h3 class="text-white fw-bold mb-2">
                                     <a href="{{route('detail', ['slug' => $postsSub->first()->slug])}}" class="title-hover-white text-white text-capitalize">
-                                        {{$postsSub->first()->title}}
+                                        {{$postsSub->first()->clean_title}}
                                     </a>
                                 </h3>
-                                <div class="shares text-white-50 fs-7">
-                                    <i class="fa-solid fa-share-nodes me-2"></i>100+K Shares
-                                </div>
+{{--                                <div class="shares text-white-50 fs-7">--}}
+{{--                                    <i class="fa-solid fa-share-nodes me-2"></i>100+K Shares--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                         @foreach($postsSub->skip(1) as $post)
                             <div class="top-game-item d-flex align-items-center p-3 mb-3">
-                                <span class="top-game-num">{{ sprintf('%02d', $loop->iteration + 1) }}</span>
+                               <h3>
+                                   <span class="top-game-num">{{ sprintf('%02d', $loop->iteration + 1) }}</span>
+                               </h3>
                                 <div class="top-game-info flex-grow-1">
                                     <h4 class="top-game-title mb-1">
-                                        <a href="{{route('detail', ['slug' => $post->slug])}}" class="text-theme-light truncate-2-line">
-                                            <span class="title-hover">{{$post->title}}</span>
+                                        <a href="{{route('detail', ['slug' => $post->slug])}}" class="black-light-dark-semi-white truncate-2-line">
+                                            <span class="title-hover hover-black-white">{{$post->title}}</span>
                                         </a>
                                     </h4>
-                                    <div class="shares text-muted fs-7">
-                                        <i class="fa-solid fa-share-nodes me-2"></i>100+K Shares
-                                    </div>
+{{--                                    <div class="shares fs-7 gray-light-dark-white">--}}
+{{--                                        <i class="fa-solid fa-share-nodes me-2 "></i>100+K Shares--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
                         @endforeach

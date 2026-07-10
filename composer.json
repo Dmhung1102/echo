@@ -12,6 +12,7 @@
         "reliese/laravel": "*"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^4.4",
         "barryvdh/laravel-ide-helper": "*",
         "fakerphp/faker": "^1.23",
         "laravel/pail": "^1.2.2",

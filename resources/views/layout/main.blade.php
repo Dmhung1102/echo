@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <script>
+        if (localStorage.getItem('theme') === 'dark-theme') {
+            document.documentElement.classList.add('dark-theme');
+        }
+    </script>
     <title>@yield('title')</title>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -24,7 +29,6 @@
         const searchBtn = document.querySelector('.header-search-btn');
         const searchArea = document.querySelector('.search-btn-area');
         const closeBtn = document.querySelector('.search-close-icon');
-        const themeToggle = document.getElementById('rts-data-toggle');
 
         if (searchBtn && searchArea) {
             searchBtn.addEventListener('click', function (e) {
@@ -39,10 +43,21 @@
             });
         }
 
+        const themeToggle = document.querySelector('#rts-data-toggle'); // ID của nút bấm
+
         if (themeToggle) {
             themeToggle.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.body.classList.toggle('dark-theme');
+
+                // Thay vì body, ta toggle trên thẻ <html>
+                document.documentElement.classList.toggle('dark-theme');
+
+                // Lưu trạng thái
+                if (document.documentElement.classList.contains('dark-theme')) {
+                    localStorage.setItem('theme', 'dark-theme');
+                } else {
+                    localStorage.setItem('theme', 'light-theme');
+                }
             });
         }
 
@@ -78,6 +93,15 @@
                     behavior: 'smooth'
                 });
             });
+        }
+    });
+    document.querySelectorAll('.fill-content p').forEach(p => {
+        const count = p.querySelectorAll('img').length;
+
+        if (count === 1) {
+            p.classList.add('single-image');
+        } else if (count > 1 && count < 4) {
+            p.classList.add('center-image');
         }
     });
 </script>

@@ -94,7 +94,9 @@
                 <div class="col-xl-7 col-lg-7 d-none d-lg-block">
                     <ul class="d-flex align-items-center gap-4 justify-content-center menu-list">
                         <li class="has-dropdown">
-                            <a href="#">Home <i class="fa-solid fa-angle-down"></i></a>
+                            <a href="#">Home
+{{--                                <i class="fa-solid fa-angle-down"></i>--}}
+                            </a>
                             <ul class="dropdown-menu-list">
                                 <li class="menu-item"><a href="#" class="menu-item-link">Home 01 - Main</a></li>
                                 <li class="menu-item"><a href="#" class="menu-item-link">Home 02 - Fashion</a></li>
@@ -109,7 +111,9 @@
                             </ul>
                         </li>
                         <li class="has-dropdown">
-                            <a href="#">Pages <i class="fa-solid fa-angle-down"></i></a>
+                            <a href="#">Pages
+{{--                                <i class="fa-solid fa-angle-down"></i>--}}
+                            </a>
                             <ul class="dropdown-menu-list">
                                 <li class="menu-item"><a href="#" class="menu-item-link">About Us</a></li>
                                 <li class="menu-item"><a href="#" class="menu-item-link">Our Team</a></li>
@@ -118,10 +122,14 @@
                             </ul>
                         </li>
                         <li class="has-dropdown">
-                            <a href="#">Category <i class="fa-solid fa-angle-down"></i></a>
+                            <a href="#">Category
+{{--                                <i class="fa-solid fa-angle-down"></i>--}}
+                            </a>
                         </li>
                         <li class="has-dropdown">
-                            <a href="#">News <i class="fa-solid fa-angle-down"></i></a>
+                            <a href="#">News
+{{--                                <i class="fa-solid fa-angle-down"></i>--}}
+                            </a>
                             <ul class="dropdown-menu-list d-flex gap-3 menu-center p-3">
                                 <li class="news-card">
                                     <a href="#" class="news-card-link">
@@ -166,7 +174,9 @@
                             </ul>
                         </li>
                         <li class="has-dropdown">
-                            <a href="#">Post <i class="fa-solid fa-angle-down"></i></a>
+                            <a href="#">Post
+{{--                                <i class="fa-solid fa-angle-down"></i>--}}
+                            </a>
                         </li>
                         <li>
                             <a href="#">Contact</a>
@@ -174,38 +184,40 @@
                     </ul>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-5 col-sm-5 col-5 text-end">
-                    <ul class="d-flex gap-4">
-                        <li>
-                            <a href="" class="social-desktop">
-                                <i class="fa-brands fa-facebook-f"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="social-desktop">
-                                <i class="fa-brands fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="social-desktop">
-                                <i class="fa-brands fa-linkedin-in"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="social-desktop">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="social-desktop">
-                                <i class="fa-brands fa-pinterest-p"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="social-desktop">
-                                <i class="fa-brands fa-youtube"></i>
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="" id="social-header">
+                        <ul class="d-flex gap-4" >
+                            <li>
+                                <a href="" class="social-desktop">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="social-desktop">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="social-desktop">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="social-desktop">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="social-desktop">
+                                    <i class="fa-brands fa-pinterest-p"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="social-desktop">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <a href="#" class="header-menu-btn-mobile" data-bs-toggle="offcanvas"
                        data-bs-target="#offCanvasMobile" aria-controls="offCanvasMobile">
                         <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
