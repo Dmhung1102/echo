@@ -94,31 +94,29 @@
                 <div class="col-xl-7 col-lg-7 d-none d-lg-block">
                     <ul class="d-flex align-items-center gap-4 justify-content-center menu-list">
                         <li class="has-dropdown">
-                            <a href="#">Home
+                            <a href="{{route('home')}}">Home
 {{--                                <i class="fa-solid fa-angle-down"></i>--}}
                             </a>
-                            <ul class="dropdown-menu-list">
-                                <li class="menu-item"><a href="#" class="menu-item-link">Home 01 - Main</a></li>
-                                <li class="menu-item"><a href="#" class="menu-item-link">Home 02 - Fashion</a></li>
-                                <li class="menu-item"><a href="#" class="menu-item-link">Home 03 - Technology</a></li>
-                                <li class="menu-item"><a href="#" class="menu-item-link">Home 04 - Gamming</a></li>
-                                <li class="menu-item"><a href="#" class="menu-item-link">Home 05 - Sports</a></li>
-                                <li class="menu-item"><a href="#" class="menu-item-link">Home 06 - Travel</a></li>
-                                <li class="menu-item"><a href="#" class="menu-item-link">Home 07 - AI</a></li>
-                                <li class="menu-item"><a href="#" class="menu-item-link">Home 08 - Politics</a></li>
-                                <li class="menu-item"><a href="#" class="menu-item-link">Home 09 - Food</a></li>
-                                <li class="menu-item"><a href="#" class="menu-item-link">Home 10 - Photography</a></li>
-                            </ul>
+{{--                            <ul class="dropdown-menu-list">--}}
+{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 01 - Main</a></li>--}}
+{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 02 - Fashion</a></li>--}}
+{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 03 - Technology</a></li>--}}
+{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 04 - Gamming</a></li>--}}
+{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 05 - Sports</a></li>--}}
+{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 06 - Travel</a></li>--}}
+{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 07 - AI</a></li>--}}
+{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 08 - Politics</a></li>--}}
+{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 09 - Food</a></li>--}}
+{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 10 - Photography</a></li>--}}
+{{--                            </ul>--}}
                         </li>
                         <li class="has-dropdown">
                             <a href="#">Pages
 {{--                                <i class="fa-solid fa-angle-down"></i>--}}
                             </a>
                             <ul class="dropdown-menu-list">
-                                <li class="menu-item"><a href="#" class="menu-item-link">About Us</a></li>
-                                <li class="menu-item"><a href="#" class="menu-item-link">Our Team</a></li>
-                                <li class="menu-item"><a href="#" class="menu-item-link">FAQ</a></li>
-                                <li class="menu-item"><a href="#" class="menu-item-link">Contact Us</a></li>
+                                <li class="menu-item"><a href="{{route('about')}}" class="menu-item-link">About</a></li>
+                                <li class="menu-item"><a href="{{route('contact')}}" class="menu-item-link">Contact</a></li>
                             </ul>
                         </li>
                         <li class="has-dropdown">
@@ -173,14 +171,14 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="has-dropdown">
-                            <a href="#">Post
+{{--                        <li class="has-dropdown">--}}
+{{--                            <a href="#">Post--}}
 {{--                                <i class="fa-solid fa-angle-down"></i>--}}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">Contact</a>
-                        </li>
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="#">Contact</a>--}}
+{{--                        </li>--}}
                     </ul>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-5 col-sm-5 col-5 text-end">

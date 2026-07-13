@@ -26,9 +26,11 @@
                             </h1>
                             <div class="latest-news-time-views text-center">
                                 <a href="#" class="pe-none" style="color: #5E5E5E"><i class="bi bi-calendar-fill me-2"></i>{{$postsHero->first()->formatted_date}}</a>
-                                <a href="{{route('tag', ['slug' => $postsHero->first()->tag->first()->slug])}}" class="" style="color: #5E5E5E">
-                                    <i class="bi bi-tag-fill me-2"></i>{{$postsHero->first()->tag->first()->title}}
-                                </a>
+                                @if($postsHero->first()->tag)
+                                    <a href="{{route('tag', ['slug' => $postsHero->first()->tag->first()->slug])}}" class="" style="color: #5E5E5E">
+                                        <i class="bi bi-tag-fill me-2"></i>{{$postsHero->first()->tag->first()->title}}
+                                    </a>
+                                @endif
 {{--                                <a href="#" class="pe-none"><i class="fa-solid fa-pen me-2"></i> John Snow</a>--}}
                             </div>
 
@@ -102,8 +104,10 @@
                                     <div class="latest-news-time-views text-center">
                                         <a href="#" class="pe-none gray-light-dark-white"><i class="bi bi-calendar-fill me-2"></i>{{$postTrending->formatted_date}}
                                         </a>
-                                        <a href="{{route('tag', ['slug' => $postTrending->tag->first()->slug])}}" class="gray-light-dark-white"> <i class="bi bi-tag-fill me-2"></i>{{$postTrending->tag->first()->title}}
-                                        </a>
+                                        @if($postTrending->tag)
+                                            <a href="{{route('tag', ['slug' => $postTrending->tag->first()->slug])}}" class="gray-light-dark-white"> <i class="bi bi-tag-fill me-2"></i>{{$postTrending->tag->first()->title}}
+                                            </a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -438,7 +442,9 @@
                                     </h3>
                                     <div class="latest-news-time-views p-0 border-0">
                                         <a href="#" class="pe-none gray-light-dark-white"><i class="bi bi-calendar-fill me-2"></i>{{$postMain->formatted_date}}</a>
-                                        <a href="{{route('tag', ['slug' => $postMain->tag->first()->slug])}}" class="gray-light-dark-white"><i class="bi bi-tag-fill me-2"></i>{{$postMain->tag->first()->title}}</a>
+                                        @if($postMain->tag)
+                                            <a href="{{route('tag', ['slug' => $postMain->tag->first()->slug])}}" class="gray-light-dark-white"><i class="bi bi-tag-fill me-2"></i>{{$postMain->tag->first()->title}}</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -484,7 +490,7 @@
                                 <div class="top-game-info flex-grow-1">
                                     <h4 class="top-game-title mb-1">
                                         <a href="{{route('detail', ['slug' => $post->slug])}}" class="black-light-dark-semi-white truncate-2-line">
-                                            <span class="title-hover hover-black-white">{{$post->title}}</span>
+                                            <span class="title-hover hover-black-white">{{$post->clean_title}}</span>
                                         </a>
                                     </h4>
 {{--                                    <div class="shares fs-7 gray-light-dark-white">--}}

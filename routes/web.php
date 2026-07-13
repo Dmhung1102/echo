@@ -13,3 +13,5 @@ Route::get('/explore', [CategoryController::class, 'explore'])->name('explore');
 Route::get('/category/{slug}', [CategoryController::class, 'archive'])->name('category');
 Route::get('/tag/{slug}', [TagController::class, 'archive'])->name('tag');
 Route::get('/test', [DetailController::class, 'test'])->name('test');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');

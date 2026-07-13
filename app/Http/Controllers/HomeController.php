@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use Illuminate\Support\Collection;
 
 class HomeController extends Controller
 {
@@ -15,26 +16,34 @@ class HomeController extends Controller
         $categories = Category::all();
         $categoriesBySlug = $categories->keyBy('slug');
         $categoriesBySourceId = $categories->keyBy('source_id');
-        $tagsBySourceId = Tag::all()->keyBy('source_id');
 
         $postsHero = Post::latest('date')->take(5)->get($columns);
-        $postsTrending = Post::whereJsonContains('category_id',$categoriesBySlug['news']->source_id)
-            ->whereNotIn('id', $postsHero->pluck('id'))
-            ->latest('date')
-            ->take(4)
-            ->get($columns);
-        $postsFeature = Post::whereJsonContains('category_id',$categoriesBySlug['editorial']->source_id)
-            ->latest('date')
-            ->take(5)
-            ->get($columns);
-        $postsEditor = Post::whereJsonContains('category_id',$categoriesBySlug['articles']->source_id)
-            ->latest('date')
-            ->take(11)
-            ->get($columns);
-        $postsTip = Post::whereJsonContains('category_id',$categoriesBySlug['mods']->source_id)
-            ->latest('date')
-            ->take(7)
-            ->get($columns);
+        $postsTrending = $this->getPostsByCategory($categoriesBySlug['news']->source_id,'4',$columns,$postsHero->pluck('id'));
+        $postsFeature = $this->getPostsByCategory($categoriesBySlug['editorial']->source_id,'5',$columns);
+        $postsEditor = $this->getPostsByCategory($categoriesBySlug['articles']->source_id,'11',$columns);
+        $postsTip = $this->getPostsByCategory($categoriesBySlug['mods']->source_id,'7',$columns);
+
+        $tagIds = collect();
+
+        foreach ([
+                     $postsHero,
+                     $postsTrending,
+                     $postsFeature,
+                     $postsEditor,
+                     $postsTip,
+                 ] as $posts) {
+
+            foreach ($posts as $post) {
+
+                $tagIds = $tagIds->merge(
+                    json_decode($post->tag_id, true) ?? []
+                );
+            }
+        }
+        $tagIds = $tagIds->unique();
+        $tagsBySourceId = Tag::whereIn('source_id', $tagIds)
+            ->get()
+            ->keyBy('source_id');
 
         // Attach relations
         $this->attachRelations($postsHero, $categoriesBySourceId, $tagsBySourceId);
@@ -44,6 +53,15 @@ class HomeController extends Controller
         $this->attachRelations($postsTip, $categoriesBySourceId, $tagsBySourceId);
 
         return view('home', compact('postsHero','postsTrending','postsFeature','postsEditor','postsTip'));
+    }
+
+    private function getPostsByCategory( int $categoryId, int $limit, array $columns, ?Collection $excludeIds = null ): Collection
+    {
+        $query = Post::WhereJsonContains('category_id', $categoryId);
+        if ($excludeIds) {
+            $query->whereNotIn('id', $excludeIds);
+        }
+        return $query->latest('date')->take($limit)->get($columns);
     }
 
     private function attachRelations($posts, $categories, $tags)
@@ -63,4 +81,15 @@ class HomeController extends Controller
 
         return $posts;
     }
+
+    public function about()
+    {
+        return view('about');
+    }
+
+    public function contact()
+    {
+
+    }
+
 }

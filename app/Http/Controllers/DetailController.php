@@ -16,7 +16,7 @@ class DetailController extends Controller
         $tags = Tag::all()->keyBy('source_id');
         $tag_id = json_decode($fetchData->tag_id, true);
         $fetchData->tag = collect($tag_id)->map(fn ($id) => $tags[$id] ?? null )->filter()->values();
-        $latestPosts = Post::where('id', '!=', $fetchData->id)->latest()->take(6)->get();
+        $latestPosts = Post::where('id', '!=', $fetchData->id)->latest('date')->skip(4)->take(6)->get();
         return view('detail', compact('fetchData', 'latestPosts'));
     }
 
