@@ -1,3 +1,4 @@
+@php use App\Models\Category;use App\Models\Post; @endphp
 <header>
     <div class="header-top py-4">
         <div class="container">
@@ -6,7 +7,9 @@
                     <div class="col-xl-4 col-lg-4 d-none d-lg-block">
                         <div class="d-flex align-items-center gap-3 align-items-center">
                             <div class="header-meta-icon">
-                                <img src="https://html.themewant.com/echo/assets/images/home-1/header-top/home-4-header-top.svg" alt="icon">
+                                <img
+                                    src="https://html.themewant.com/echo/assets/images/home-1/header-top/home-4-header-top.svg"
+                                    alt="icon">
                             </div>
                             <div class="header-meta-text">
                                 <div class="fw-bold text-truncate-custom">
@@ -16,17 +19,17 @@
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-7 col-8">
-                        <div class="d-flex gap-3">
+                        <div class="d-flex gap-3 justify-content-center">
                             <div class="header-day">
                                 <span>
                                     <i class="fa-solid fa-cloud me-2"></i>
                                 </span>
-                                <span><strong>Sunday,</strong> 01 Jan 23 </span>
+                                <span><strong>{{ now()->format('l') }},</strong> {{ now('UTC')->format(' d M y') }}</span>
                             </div>
-                            <div class="header-time">
-                                <span><i class="fa-regular fa-calendar me-2"></i></span>
-                                <span><strong>31°C,</strong> New York </span>
-                            </div>
+{{--                            <div class="header-time">--}}
+{{--                                <span><i class="fa-regular fa-calendar me-2"></i></span>--}}
+{{--                                <span><strong>31°C,</strong> New York </span>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-5 col-4">
@@ -87,7 +90,8 @@
                 <div class="col-xl-2 col-lg-2 col-md-7 col-sm-7 col-7">
                     <div class="logo">
                         <a href="{{route('home')}}">
-                            <img src="https://html.themewant.com/echo/assets/images/home-1/site-logo/site-logo4.svg" alt="">
+                            <img src="https://html.themewant.com/echo/assets/images/home-1/site-logo/site-logo4.svg"
+                                 alt="">
                         </a>
                     </div>
                 </div>
@@ -95,95 +99,75 @@
                     <ul class="d-flex align-items-center gap-4 justify-content-center menu-list">
                         <li class="has-dropdown">
                             <a href="{{route('home')}}">Home
-{{--                                <i class="fa-solid fa-angle-down"></i>--}}
+                                {{--                                <i class="fa-solid fa-angle-down"></i>--}}
                             </a>
-{{--                            <ul class="dropdown-menu-list">--}}
-{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 01 - Main</a></li>--}}
-{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 02 - Fashion</a></li>--}}
-{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 03 - Technology</a></li>--}}
-{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 04 - Gamming</a></li>--}}
-{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 05 - Sports</a></li>--}}
-{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 06 - Travel</a></li>--}}
-{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 07 - AI</a></li>--}}
-{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 08 - Politics</a></li>--}}
-{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 09 - Food</a></li>--}}
-{{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 10 - Photography</a></li>--}}
-{{--                            </ul>--}}
+                            {{--                            <ul class="dropdown-menu-list">--}}
+                            {{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 01 - Main</a></li>--}}
+                            {{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 02 - Fashion</a></li>--}}
+                            {{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 03 - Technology</a></li>--}}
+                            {{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 04 - Gamming</a></li>--}}
+                            {{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 05 - Sports</a></li>--}}
+                            {{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 06 - Travel</a></li>--}}
+                            {{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 07 - AI</a></li>--}}
+                            {{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 08 - Politics</a></li>--}}
+                            {{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 09 - Food</a></li>--}}
+                            {{--                                <li class="menu-item"><a href="#" class="menu-item-link">Home 10 - Photography</a></li>--}}
+                            {{--                            </ul>--}}
                         </li>
                         <li class="has-dropdown">
                             <a href="#">Pages
-{{--                                <i class="fa-solid fa-angle-down"></i>--}}
+                                {{--                                <i class="fa-solid fa-angle-down"></i>--}}
                             </a>
                             <ul class="dropdown-menu-list">
                                 <li class="menu-item"><a href="{{route('about')}}" class="menu-item-link">About</a></li>
-                                <li class="menu-item"><a href="{{route('contact')}}" class="menu-item-link">Contact</a></li>
+                                <li class="menu-item"><a href="{{route('contact')}}" class="menu-item-link">Contact</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="has-dropdown">
-                            <a href="#">Category
-{{--                                <i class="fa-solid fa-angle-down"></i>--}}
+                            <a href="{{route('explore')}}">Category
+                                {{--                                <i class="fa-solid fa-angle-down"></i>--}}
                             </a>
+                            <ul class="dropdown-menu-list">
+                                @foreach(Category::getCategories() as $category)
+                                <li class="menu-item"><a href="{{route('category',['slug' => $category->slug])}}" class="menu-item-link">{{$category->title}}</a></li>
+                                @endforeach
+                            </ul>
                         </li>
                         <li class="has-dropdown">
                             <a href="#">News
-{{--                                <i class="fa-solid fa-angle-down"></i>--}}
+                                {{--                                <i class="fa-solid fa-angle-down"></i>--}}
                             </a>
                             <ul class="dropdown-menu-list d-flex gap-3 menu-center p-3">
-                                <li class="news-card">
-                                    <a href="#" class="news-card-link">
-                                        <div class="news-card-img">
-                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2ooBBf1ZmIk36uDZPKpI8nKeSbs5jr0uAA&s" alt="">
-                                        </div>
-                                        <div class="news-card-title truncate-1-line">
-                                            Xi, Putin hail 'new era' xi xi
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="news-card">
-                                    <a href="#" class="news-card-link">
-                                        <div class="news-card-img">
-                                            <img src="https://html.themewant.com/echo/assets/images/home-1/latest-news/item-1.png" alt="">
-                                        </div>
-                                        <div class="news-card-title truncate-1-line">
-                                            PlayStation stars Campaigns
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="news-card">
-                                    <a href="#" class="news-card-link">
-                                        <div class="news-card-img">
-                                            <img src="https://html.themewant.com/echo/assets/images/home-1/hero/banner-item-1.png" alt="">
-                                        </div>
-                                        <div class="news-card-title truncate-1-line">
-                                            Jump into Wayfinder 23
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="news-card">
-                                    <a href="#" class="news-card-link">
-                                        <div class="news-card-img">
-                                            <img src="https://html.themewant.com/echo/assets/images/home-1/latest-news/item-1.png" alt="">
-                                        </div>
-                                        <div class="news-card-title truncate-1-line">
-                                            The Future of AI Technology
-                                        </div>
-                                    </a>
-                                </li>
+                                @foreach(Post::getLatestPosts(4) as $post)
+                                    <li class="news-card">
+                                        <a href="{{route('detail', ['slug' => $post->slug])}}" class="news-card-link">
+                                            <div class="news-card-img">
+                                                <img
+                                                    src="{{$post->featured_image}}"
+                                                    alt="{{$post->slug}}">
+                                            </div>
+                                            <div class="news-card-title truncate-2-line">
+                                                {{$post->clean_title}}
+                                            </div>
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
-{{--                        <li class="has-dropdown">--}}
-{{--                            <a href="#">Post--}}
-{{--                                <i class="fa-solid fa-angle-down"></i>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a href="#">Contact</a>--}}
-{{--                        </li>--}}
+                        {{--                        <li class="has-dropdown">--}}
+                        {{--                            <a href="#">Post--}}
+                        {{--                                <i class="fa-solid fa-angle-down"></i>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
+                        {{--                        <li>--}}
+                        {{--                            <a href="#">Contact</a>--}}
+                        {{--                        </li>--}}
                     </ul>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-5 col-sm-5 col-5 text-end">
                     <div class="" id="social-header">
-                        <ul class="d-flex gap-4" >
+                        <ul class="d-flex gap-4">
                             <li>
                                 <a href="" class="social-desktop">
                                     <i class="fa-brands fa-facebook-f"></i>
@@ -253,16 +237,16 @@
                         <a href="#" class="item d-flex gap-4 social-desktop">
                             <img src="assets/img/content/1.png" alt="">
                             <div class="detail">
-                                    <div class="title mb-1">The incident began as an argument among.</div>
-                                    <div class="author d-flex align-items-center gap-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                             fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                          <path
-                                              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
-                                        </svg>
-                                            Asley Graham
-                                    </div>
-                             </div>
+                                <div class="title mb-1">The incident began as an argument among.</div>
+                                <div class="author d-flex align-items-center gap-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                                    </svg>
+                                    Asley Graham
+                                </div>
+                            </div>
                         </a>
                     </li>
                     <li class="my-4">
@@ -314,23 +298,40 @@
             <ul class="mobile-menu-list">
                 <li class="mobile-menu-item">
                     <div class="menu-item-main d-flex align-items-center justify-content-between py-2">
-                        <a href="#" class="text-white fw-semibold">Home</a>
-                        <button class="submenu-toggle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#mobileHomeSub" aria-expanded="true">
+                        <a href="{{route('home')}}" class="text-white fw-semibold">Home</a>
+                        {{--                        <button class="submenu-toggle-btn" type="button" data-bs-toggle="collapse"--}}
+                        {{--                                data-bs-target="#mobileHomeSub" aria-expanded="true">--}}
+                        {{--                            <i class="fa-solid fa-chevron-down"></i>--}}
+                        {{--                        </button>--}}
+                    </div>
+                    <div class="collapse show" id="mobileHomeSub">
+                        {{--                        <ul class="submenu-list">--}}
+                        {{--                            <li><a href="#">Home 01 - Main</a></li>--}}
+                        {{--                            <li><a href="#">Home 02 - Fashion</a></li>--}}
+                        {{--                            <li><a href="#">Home 03 - Technology</a></li>--}}
+                        {{--                            <li><a href="#">Home 04 - Gamming</a></li>--}}
+                        {{--                            <li><a href="#">Home 05 - Sports</a></li>--}}
+                        {{--                            <li><a href="#">Home 06 - Travel</a></li>--}}
+                        {{--                            <li><a href="#">Home 07 - AI</a></li>--}}
+                        {{--                            <li><a href="#">Home 08 - Politics</a></li>--}}
+                        {{--                            <li><a href="#">Home 09 - Food</a></li>--}}
+                        {{--                            <li><a href="#">Home 10 - Photography</a></li>--}}
+                        {{--                        </ul>--}}
+                    </div>
+                </li>
+                <li class="mobile-menu-item">
+                    <div class="menu-item-main d-flex align-items-center justify-content-between py-2">
+                        <a href="#" class="text-white fw-semibold">Category</a>
+                        <button class="submenu-toggle-btn collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#mobileCategorySub" aria-expanded="false">
                             <i class="fa-solid fa-chevron-down"></i>
                         </button>
                     </div>
-                    <div class="collapse show" id="mobileHomeSub">
+                    <div class="collapse" id="mobileCategorySub">
                         <ul class="submenu-list">
-                            <li><a href="#">Home 01 - Main</a></li>
-                            <li><a href="#">Home 02 - Fashion</a></li>
-                            <li><a href="#">Home 03 - Technology</a></li>
-                            <li><a href="#">Home 04 - Gamming</a></li>
-                            <li><a href="#">Home 05 - Sports</a></li>
-                            <li><a href="#">Home 06 - Travel</a></li>
-                            <li><a href="#">Home 07 - AI</a></li>
-                            <li><a href="#">Home 08 - Politics</a></li>
-                            <li><a href="#">Home 09 - Food</a></li>
-                            <li><a href="#">Home 10 - Photography</a></li>
+                            @foreach(Category::getCategories() as $category)
+                                <li><a href="{{route('category', ['slug' => $category->slug])}}">{{$category->title}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </li>
@@ -341,36 +342,9 @@
                 </li>
                 <li class="mobile-menu-item">
                     <div class="menu-item-main d-flex align-items-center justify-content-between py-2">
-                        <a href="#" class="text-white fw-semibold">Category</a>
-                        <button class="submenu-toggle-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mobileCategorySub" aria-expanded="false">
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="collapse" id="mobileCategorySub">
-                        <ul class="submenu-list">
-                            <li><a href="#">Category 01</a></li>
-                            <li><a href="#">Category 02</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="mobile-menu-item">
-                    <div class="menu-item-main d-flex align-items-center justify-content-between py-2">
-                        <a href="#" class="text-white fw-semibold">Features</a>
-                        <button class="submenu-toggle-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mobileFeaturesSub" aria-expanded="false">
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="collapse" id="mobileFeaturesSub">
-                        <ul class="submenu-list">
-                            <li><a href="#">Feature 01</a></li>
-                            <li><a href="#">Feature 02</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="mobile-menu-item">
-                    <div class="menu-item-main d-flex align-items-center justify-content-between py-2">
                         <a href="#" class="text-white fw-semibold">Post</a>
-                        <button class="submenu-toggle-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mobilePostSub" aria-expanded="false">
+                        <button class="submenu-toggle-btn collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#mobilePostSub" aria-expanded="false">
                             <i class="fa-solid fa-chevron-down"></i>
                         </button>
                     </div>

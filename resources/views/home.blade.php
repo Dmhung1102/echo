@@ -21,7 +21,7 @@
                         <div class="content">
                             <h1 class="latest-content-title text-center">
                                 <a href="{{route('detail', ['slug' => $postsHero->first()->slug])}}" class="title-hover text-capitalize text-black">
-                                    {{$postsHero->first()->title}}
+                                    {{$postsHero->first()->clean_title}}
                                 </a>
                             </h1>
                             <div class="latest-news-time-views text-center">
@@ -101,11 +101,11 @@
                                                 class="hover-black-white text-capitalize">{{$postTrending->clean_title}}</span>
                                         </a>
                                     </h3>
-                                    <div class="latest-news-time-views text-center">
-                                        <a href="#" class="pe-none gray-light-dark-white"><i class="bi bi-calendar-fill me-2"></i>{{$postTrending->formatted_date}}
+                                    <div class="latest-news-time-views d-flex justify-content-center px-3">
+                                        <a href="#" class="pe-none gray-light-dark-white flex-shrink-0"><i class="bi bi-calendar-fill me-2"></i>{{$postTrending->formatted_date}}
                                         </a>
                                         @if($postTrending->tag)
-                                            <a href="{{route('tag', ['slug' => $postTrending->tag->first()->slug])}}" class="gray-light-dark-white"> <i class="bi bi-tag-fill me-2"></i>{{$postTrending->tag->first()->title}}
+                                            <a href="{{route('tag', ['slug' => $postTrending->tag->first()->slug])}}" class="gray-light-dark-white text-truncate"> <i class="bi bi-tag-fill me-2"></i>{{$postTrending->tag->first()->title}}
                                             </a>
                                         @endif
                                     </div>
@@ -239,7 +239,7 @@
                             </li>
                         </ul>
                         <div class="feature-ad">
-                            <img src="https://html.themewant.com/echo/assets/images/home-1/cta/ad-2.png" alt="" loading="lazy">
+                            <img src="https://html.themewant.com/echo/assets/images/home-1/cta/ad-2.png" alt="" loading="lazy" class="w-100">
                         </div>
                     </div>
                 </div>
@@ -281,11 +281,11 @@
                                                     </span>
                                                 </a>
                                             </h3>
-                                            <div class="latest-news-time-views text-center">
-                                                <a href="#" class="pe-none gray-light-dark-white"><i class="bi bi-calendar-fill me-2"></i>{{$postMain->formatted_date}}
+                                            <div class="latest-news-time-views text-center d-flex justify-content-center px-3">
+                                                <a href="#" class="pe-none gray-light-dark-white flex-shrink-0"><i class="bi bi-calendar-fill me-2"></i>{{$postMain->formatted_date}}
                                                 </a>
                                                 @if($postMain->tag->isNotEmpty())
-                                                    <a href="{{route('tag', ['slug' => $postMain->tag->first()->slug])}}" class="gray-light-dark-white"><i class="bi bi-tag-fill me-2"></i>{{$postMain->tag->first()->title}}</a>
+                                                    <a href="{{route('tag', ['slug' => $postMain->tag->first()->slug])}}" class="gray-light-dark-white text-truncate"><i class="bi bi-tag-fill me-2"></i>{{$postMain->tag->first()->title}}</a>
                                                 @endif
                                             </div>
                                         </div>

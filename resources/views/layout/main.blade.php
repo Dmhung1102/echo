@@ -13,9 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-icons.min.css') }}">
     @yield('style')
 </head>
 <body>
@@ -23,7 +22,7 @@
 @yield('content')
 @include('layout.footer')
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('assets/js/lazy.js') }}"></script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const searchBtn = document.querySelector('.header-search-btn');

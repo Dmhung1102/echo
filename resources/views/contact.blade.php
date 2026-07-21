@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('title')
-    About
+    Contact
 @endsection
 @section('content')
     <div class="breadcrumb-section"

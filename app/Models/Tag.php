@@ -54,4 +54,15 @@ class Tag extends Model
 		'slug',
 		'count'
 	];
+
+    public static function getTags()
+    {
+        return cache()->remember('tags', 600, function () {
+            return self::all();
+        });
+    }
+
+    public static function getBySrcId() {
+        return self::getTags()->keyBy('source_id');
+    }
 }

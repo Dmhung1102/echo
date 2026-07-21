@@ -27,13 +27,11 @@
                              alt="">
                     </div>
                     <div class="content black-light-dark-white">
-                        <a href="{{route('detail', ['slug' => $fetchData->slug])}}" class="my-4">
-                            <h2 class="">
+                        <h2 class="my-4">
                            <span class="title-hover text-capitalize black-light-dark-white title-detail">
                                 {{$fetchData->clean_title}}
                            </span>
-                            </h2>
-                        </a>
+                        </h2>
                        <div class="fill-content">
                            {!! $fetchData->content !!}
                        </div>

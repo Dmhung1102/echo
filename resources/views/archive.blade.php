@@ -33,10 +33,10 @@
                                 </a>
                                 <div class="p-4">
                                     <h2 class="fs-50-hover black-light-dark-white">
-                                        <a href="{{route('detail', ['slug' => $newPosts[4]->slug])}}" class="">
-                                    <span class="black-light-dark-white hover-black-white text-capitalize">
-                                        {{$newPosts[4]->clean_title}} {{$newPosts[4]->id}}
-                                    </span>
+                                        <a href="{{route('detail', ['slug' => $newPosts[4]->slug])}}" class="truncate-2-line black-light-dark-white">
+                                            <span class="hover-black-white text-capitalize">
+                                                {{$newPosts[4]->clean_title}} {{$newPosts[4]->id}}
+                                            </span>
                                         </a>
                                     </h2>
                                     <div class="post-date-view d-flex flex-wrap my-4 gap-4 gray-light-dark-white">

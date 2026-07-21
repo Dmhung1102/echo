@@ -184,7 +184,7 @@ ul {
 
 .fs-50-hover {
     font-size: 50px;
-    line-height: 60px;
+    line-height: 70px;
 }
 
 .hover-black-white {
@@ -1186,7 +1186,7 @@ body.dark-theme .title-area.right::before {
 }
 
 .feature-section .social-area ul {
-    gap: 20px;
+    gap: 15px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -1824,6 +1824,16 @@ body.dark-theme .top-game-num {
 
 .fill-content p.center-image {
     text-align: center;
+}
+
+.dropdown-menu-list::-webkit-scrollbar {
+    display: none;
+}
+
+.dropdown-menu-list {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 500px;
 }
 
 /* Responsive Slide Styles */
